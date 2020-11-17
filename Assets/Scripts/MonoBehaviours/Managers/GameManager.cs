@@ -24,7 +24,6 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
-        OnPlayerPassedFinish.AddListener(HandlePlayerPassedFinish);
         DontDestroyOnLoad(gameObject);
     }
 
@@ -106,11 +105,6 @@ public class GameManager : Singleton<GameManager>
     {
         Debug.Log("Game quit");
         Application.Quit();
-    }
-
-    public void HandlePlayerPassedFinish(Player player)
-    {
-        Debug.Log($"Finish line passed by player {player.name}!");
     }
 }
 
