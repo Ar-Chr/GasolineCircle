@@ -54,11 +54,11 @@ public class PlayerMovementRigidbody : MonoBehaviour
         Vector3 localSpaceVelocity = transform.InverseTransformDirection(rigidbody.velocity);
         float forwardVelocity = localSpaceVelocity.z;
 
-        if (HoldingLeft)
-            Rotate(Time.fixedDeltaTime, forwardVelocity, -rotSpeed);
-
-        if (HoldingRight)
-            Rotate(Time.fixedDeltaTime, forwardVelocity, rotSpeed);
+        Rotate(Time.fixedDeltaTime, 
+               (HoldingLeft ? -rotSpeed : 0) + 
+               (HoldingRight ? rotSpeed : 0), 
+               forwardVelocity, 
+               specs.topSpeed);
 
         ApplyComplexDrag(Time.fixedDeltaTime, localSpaceVelocity, drag, sideDrag);
     }
@@ -75,12 +75,11 @@ public class PlayerMovementRigidbody : MonoBehaviour
         rigidbody.AddRelativeForce(acceleration * time, ForceMode.VelocityChange);
     }
 
-    private void Rotate(float time, float rotationSpeed, float velocity)
+    private void Rotate(float time, float rotationSpeed, float velocity, float topSpeed)
     {
-        if (-1 < velocity && velocity < 1)
-            velocity *= Mathf.Sin(velocity * Mathf.PI / 2);
+        rotationSpeed *= Mathf.Clamp(velocity / (topSpeed * 0.4f), -1, 1);
 
-        gameObject.transform.Rotate(Vector3.up, rotationSpeed * velocity * time);
+        gameObject.transform.Rotate(Vector3.up, rotationSpeed * time);
     }
 
     private void ApplyComplexDrag(float time, Vector3 velocity, float forwardDrag, float sideDrag)

@@ -18,5 +18,5 @@ MonoBehaviour:
   brakesDrag: 2.3
   sideDrag: 2.8
   brakesSideDrag: 0.9
-  rotationSpeed: 9
-  brakesRotationSpeed: 23
+  rotationSpeed: 60
+  brakesRotationSpeed: 150

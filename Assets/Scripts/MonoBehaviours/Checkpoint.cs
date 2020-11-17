@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
-    private Track track;
-    private int checkpointId;
+    public Track track;
+    public int id;
 
     private void OnTriggerEnter(Collider other)
     {
         if (track.PlayerThatNeedsToPass == null)
             return;
 
-        if (other.gameObject.GetComponent<Player>() != track.PlayerThatNeedsToPass)
+        if (other.gameObject != track.PlayerThatNeedsToPass)
             return;
 
-        track.CheckpointPassed(checkpointId);
+        track.CheckpointPassed(id);
     }
 }

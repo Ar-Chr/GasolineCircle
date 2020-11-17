@@ -11,6 +11,8 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private CarSelectMenu carSelectMenu;
     [SerializeField] private PauseMenu pauseMenu;
     [Space]
+    [SerializeField] private Overlay overlay;
+    [Space]
     [SerializeField] private Camera dummyCamera;
 
     private void Start()
@@ -49,6 +51,8 @@ public class UIManager : Singleton<UIManager>
         {
             globalBackground.SetActive(false);
             dummyCamera.gameObject.SetActive(false);
+            overlay.gameObject.SetActive(true);
+            overlay.Initialize();
         }
 
         pauseMenu.gameObject.SetActive(currentState == GameManager.GameState.PAUSED);

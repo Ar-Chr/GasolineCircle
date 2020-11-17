@@ -5,16 +5,18 @@ using UnityEngine;
 public class Track : MonoBehaviour
 {
     [SerializeField] private Checkpoint[] checkpoints;
-    [SerializeField] private Player playerThatNeedsToPass;
-    public Player PlayerThatNeedsToPass => playerThatNeedsToPass;
-
-    public Events.EventPlayerPassedFinish OnPlayerPassedFinish;
+    [SerializeField] private GameObject playerThatNeedsToPass;
+    public GameObject PlayerThatNeedsToPass => playerThatNeedsToPass;
 
     private int nextCheckpointToPassId;
 
     private void Start()
     {
-        OnPlayerPassedFinish.AddListener(GameManager.Instance.PlayerPassedFinish);
+        for (int i = 0; i < checkpoints.Length; i++)
+        {
+            checkpoints[i].track = this;
+            checkpoints[i].id = i;
+        }
     }
 
     public void CheckpointPassed(int checkpointId)
@@ -22,8 +24,10 @@ public class Track : MonoBehaviour
         if (checkpointId != nextCheckpointToPassId)
             return;
 
-        OnPlayerPassedFinish.Invoke(playerThatNeedsToPass);
         nextCheckpointToPassId = GetNextCheckpoint(nextCheckpointToPassId, checkpoints.Length - 1);
+
+        if (nextCheckpointToPassId == 0)
+            GameManager.Instance.OnPlayerPassedFinish.Invoke(playerThatNeedsToPass.GetComponent<Player>());
     }
 
     private int GetNextCheckpoint(int current, int maxId) => current == maxId ? 0 : current + 1;
