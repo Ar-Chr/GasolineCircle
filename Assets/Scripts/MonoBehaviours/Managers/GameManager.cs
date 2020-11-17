@@ -98,4 +98,9 @@ public class GameManager : Singleton<GameManager>
         Debug.Log("Game quit");
         Application.Quit();
     }
+
+    public void PlayerPassedFinish(Player player)
+    {
+        Debug.Log($"Finish line passed by player {player.name}!");
+    }
 }

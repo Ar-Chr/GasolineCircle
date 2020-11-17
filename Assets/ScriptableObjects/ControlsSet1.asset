@@ -16,3 +16,5 @@ MonoBehaviour:
   leftButton: 276
   rightButton: 275
   backwardButton: 274
+  brakes: 256
+  ability: 306

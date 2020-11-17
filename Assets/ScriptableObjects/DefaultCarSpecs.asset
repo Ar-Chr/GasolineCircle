@@ -9,12 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c66ccfda80547344ba1152bbce8e62cf, type: 3}
-  m_Name: ControlsSet0
+  m_Script: {fileID: 11500000, guid: 0726d6589db10624698b4b34dd4c54a1, type: 3}
+  m_Name: DefaultCarSpecs
   m_EditorClassIdentifier: 
-  forwardButton: 119
-  leftButton: 97
-  rightButton: 100
-  backwardButton: 115
-  brakes: 32
-  ability: 304
+  acceleration: 5
+  topSpeed: 10
+  reverseTopSpeed: 5
+  brakesDrag: 2.3
+  sideDrag: 2.8
+  brakesSideDrag: 0.9
+  rotationSpeed: 9
+  brakesRotationSpeed: 23
