@@ -10,6 +10,5 @@ public class ControlsSet_SO : ScriptableObject
     public KeyCode rightButton;
     public KeyCode backwardButton;
     [Space]
-    public KeyCode brakesButton;
     public KeyCode abilityButton;
 }

@@ -37,22 +37,26 @@ public class PlayerMovementRigidbody : MonoBehaviour
         float sideDrag = specs.sideDrag;
         float rotSpeed = specs.rotationSpeed;
 
+        Vector3 localSpaceVelocity = transform.InverseTransformDirection(rigidbody.velocity);
+        float forwardVelocity = localSpaceVelocity.z;
+
         if (HoldingForward)
             Accelerate(Time.fixedDeltaTime, Vector3.forward * specs.acceleration);
 
         if (HoldingBackward)
-            Accelerate(Time.fixedDeltaTime, Vector3.back * reverseAcceleration);
-
-        if (HoldingBrakes)
         {
-            sideDrag = specs.brakesSideDrag;
-            drag = specs.brakesDrag;
-            rotSpeed = GetBrakesRotationSpeed(specs.rotationSpeed, specs.brakesRotationSpeed, 
-                                              rigidbody.velocity.magnitude, specs.topSpeed);
+            if (forwardVelocity > 0.1)
+            {
+                sideDrag = specs.brakesSideDrag;
+                drag = specs.brakesDrag;
+                rotSpeed = GetBrakesRotationSpeed(specs.rotationSpeed, specs.brakesRotationSpeed,
+                                                  rigidbody.velocity.magnitude, specs.topSpeed);
+            }
+            else
+            {
+                Accelerate(Time.fixedDeltaTime, Vector3.back * reverseAcceleration);
+            }
         }
-
-        Vector3 localSpaceVelocity = transform.InverseTransformDirection(rigidbody.velocity);
-        float forwardVelocity = localSpaceVelocity.z;
 
         Rotate(Time.fixedDeltaTime, 
                (HoldingLeft ? -rotSpeed : 0) + 
@@ -68,7 +72,6 @@ public class PlayerMovementRigidbody : MonoBehaviour
     private bool HoldingLeft => Holding(controls.leftButton);
     private bool HoldingRight => Holding(controls.rightButton);
     private bool HoldingBackward => Holding(controls.backwardButton);
-    private bool HoldingBrakes => Holding(controls.brakesButton);
 
     private void Accelerate(float time, Vector3 acceleration)
     {
