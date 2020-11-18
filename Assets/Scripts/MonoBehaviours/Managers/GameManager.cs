@@ -29,6 +29,8 @@ public class GameManager : Singleton<GameManager>
     public LapInfoManager lapInfoManager;
 
     public Player[] players;
+    private Car_SO car0, car1;
+    private string name0, name1;
 
     private void Start()
     {
@@ -50,9 +52,17 @@ public class GameManager : Singleton<GameManager>
         this.nextLevelName = levelNameConverter[nextLevelName];
     }
     
-    private void HandleCarsSelected(Car player0Car, Car player1Car)
+    public void CarsSelected(Car_SO player0Car, Car_SO player1Car)
     {
+        car0 = player0Car; 
+        car1 = player1Car;
+    }
 
+    public void NamesSelected(string name0, string name1)
+    {
+        
+        this.name0 = string.IsNullOrWhiteSpace(name0) ? "Игрок 1" : name0;
+        this.name1 = string.IsNullOrWhiteSpace(name1) ? "Игрок 2" : name1;
     }
 
     #region Level load
@@ -74,6 +84,8 @@ public class GameManager : Singleton<GameManager>
     {
         players = FindObjectsOfType<Player>();
         lapInfoManager = new LapInfoManager(players);
+        players[0].Initialize(name0, car0);
+        players[1].Initialize(name1, car1);
 
         ChangeGameStateTo(GameState.RUNNING);
     }

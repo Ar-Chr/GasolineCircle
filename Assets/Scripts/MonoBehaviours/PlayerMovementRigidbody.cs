@@ -42,6 +42,7 @@ public class PlayerMovementRigidbody : MonoBehaviour
 
     private void Start()
     {
+        SetSpecs(specs);
         rigidbody = GetComponent<Rigidbody>();
         rigidbody.useGravity = false;
         rigidbody.isKinematic = false;
@@ -55,38 +56,30 @@ public class PlayerMovementRigidbody : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float drag = airDrag;
+        float wheelDrag = rollingDrag;
         float sideDrag = this.sideDrag;
         float rotSpeed = rotationSpeed;
 
         Vector3 localSpaceVelocity = transform.InverseTransformDirection(rigidbody.velocity);
         float forwardVelocity = localSpaceVelocity.z;
 
+        int rotation = (HoldingLeft ? -1 : 0) + (HoldingRight ? 1 : 0);
+
         if (HoldingForward)
             Accelerate(Time.fixedDeltaTime, Vector3.forward * acceleration);
-
-        if (HoldingBackward)
+        else if (HoldingBackward)
+            Accelerate(Time.fixedDeltaTime, Vector3.back * reverseAcceleration);
+        else
         {
-            if (forwardVelocity > 0.1)
-            {
-                sideDrag = brakesSideDrag;
-                drag = brakesDrag;
-                rotSpeed = GetBrakesRotationSpeed(rotationSpeed, brakesRotationSpeed,
-                                                  rigidbody.velocity.magnitude, topSpeed);
-            }
-            else
-            {
-                Accelerate(Time.fixedDeltaTime, Vector3.back * reverseAcceleration);
-            }
+            sideDrag = brakesSideDrag;
+            rotSpeed = GetBrakesRotationSpeed(rotationSpeed, brakesRotationSpeed,
+                                              rigidbody.velocity.magnitude, topSpeed);
+            Accelerate(Time.fixedDeltaTime, Vector3.back * Mathf.Min(forwardVelocity, brakesDrag));
         }
 
-        Rotate(Time.fixedDeltaTime, 
-               (HoldingLeft ? -rotSpeed : 0) + 
-               (HoldingRight ? rotSpeed : 0), 
-               forwardVelocity, 
-               topSpeed);
+        Rotate(Time.fixedDeltaTime, rotation * rotSpeed, forwardVelocity, topSpeed);
 
-        ApplyComplexDrag(Time.fixedDeltaTime, localSpaceVelocity, drag, sideDrag);
+        ApplyComplexDrag(Time.fixedDeltaTime, localSpaceVelocity, airDrag, wheelDrag, sideDrag);
     }
 
     private bool Holding(KeyCode key) => Input.GetKey(key);
@@ -107,17 +100,18 @@ public class PlayerMovementRigidbody : MonoBehaviour
         gameObject.transform.Rotate(Vector3.up, rotationSpeed * time);
     }
 
-    private void ApplyComplexDrag(float time, Vector3 velocity, float forwardDrag, float sideDrag)
+    private void ApplyComplexDrag(float time, Vector3 velocity, float airDrag, float wheelDrag, float sideDrag)
     {
         Vector3 complexDrag = new Vector3();
-        complexDrag.z = -velocity.z * forwardDrag;
+        complexDrag.z = -velocity.z * wheelDrag - velocity.z * Math.Abs(velocity.z) * airDrag;
         complexDrag.x = -velocity.x * sideDrag;
+        //complexDrag.x = -Mathf.Sign(velocity.x) * Mathf.Min(Mathf.Abs(velocity.x), sideDrag);
         Accelerate(time, complexDrag);
     }
 
     private float GetBrakesRotationSpeed(float normalRotSpeed, float brakesTopRotSpeed, float velocity, float topSpeed)
     {
-        return Mathf.Lerp(normalRotSpeed, brakesTopRotSpeed, velocity / topSpeed);
+        return Mathf.Lerp(normalRotSpeed, brakesTopRotSpeed, velocity / (topSpeed * 0.6f));
     }
 
     private void DropMine() // Хочу вынести в отдельный класс

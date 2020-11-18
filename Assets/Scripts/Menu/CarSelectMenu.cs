@@ -9,21 +9,27 @@ public class CarSelectMenu : MonoBehaviour
     public Button playButton;
     public Button backButton;
 
-    public Car[] carsForChoice;
+    public Car_SO[] carsForChoice;
 
-    [SerializeField] private CarSelectionArea player0SelectionArea;
-    [SerializeField] private CarSelectionArea player1SelectionArea;
+    [SerializeField] private CarSelectionArea player0;
+    [SerializeField] private CarSelectionArea player1;
 
     private void Start()
     {
-        player0SelectionArea.carSelectMenu = this;
-        player1SelectionArea.carSelectMenu = this;
+        player0.carSelectMenu = this;
+        player1.carSelectMenu = this;
+        playButton.onClick.AddListener(() => 
+            GameManager.Instance.CarsSelected(player0.CurrentCar, player1.CurrentCar));
+        playButton.onClick.AddListener(() =>
+            GameManager.Instance.NamesSelected(player0.playerNameInput.text, player1.playerNameInput.text));
     }
 }
 
 [Serializable]
 public class CarSelectionArea
 {
+    public InputField playerNameInput;
+    [Space]
     [SerializeField] private Button leftArrow;
     [SerializeField] private Button rightArrow;
     [SerializeField] private Image carImage;
@@ -32,14 +38,15 @@ public class CarSelectionArea
     [SerializeField] private Text fuelText;
     [SerializeField] private Text fuelRateText;
 
-    public CarSelectMenu carSelectMenu;
+    [HideInInspector] public CarSelectMenu carSelectMenu;
 
     private int currentCarNumber;
+    public Car_SO CurrentCar => carSelectMenu.carsForChoice[currentCarNumber];
 
     private void Start()
     {
-        leftArrow.onClick.AddListener(() => PreviousCar());
-        rightArrow.onClick.AddListener(() => NextCar());
+        leftArrow.onClick.AddListener(PreviousCar);
+        rightArrow.onClick.AddListener(NextCar);
     }
 
     private void PreviousCar()
@@ -60,11 +67,10 @@ public class CarSelectionArea
 
     private void ShowCurrentCar()
     {
-        Car currentCar = carSelectMenu.carsForChoice[currentCarNumber];
-        carImage.sprite = currentCar.sprite;
-        durabilityText.text = currentCar.specs.durability.ToString();
-        fuelText.text = currentCar.specs.fuel.ToString();
-        fuelRateText.text = currentCar.specs.fuelRate.ToString();
+        carImage.sprite = CurrentCar.sprite;
+        durabilityText.text = CurrentCar.specs.durability.ToString();
+        fuelText.text = CurrentCar.specs.fuel.ToString();
+        fuelRateText.text = CurrentCar.specs.fuelRate.ToString();
     }
 
     private void OnEnable()

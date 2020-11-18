@@ -19,10 +19,10 @@ public class UIManager : Singleton<UIManager>
 
     private void Start()
     {
-        SwitchToMenuWithButton(mainMenu.playButton, mapSelectMenu);
-        SwitchToMenuWithButton(mapSelectMenu.backButton, mainMenu);
-        SwitchToMenuWithButton(mapSelectMenu.nextButton, carSelectMenu);
-        SwitchToMenuWithButton(carSelectMenu.backButton, mapSelectMenu);
+        SwitchMenusWithButton(mainMenu.playButton, mainMenu, mapSelectMenu);
+        SwitchMenusWithButton(mapSelectMenu.backButton, mapSelectMenu, mainMenu);
+        SwitchMenusWithButton(mapSelectMenu.nextButton, mapSelectMenu,carSelectMenu);
+        SwitchMenusWithButton(carSelectMenu.backButton, carSelectMenu, mapSelectMenu);
 
         carSelectMenu.playButton.onClick.AddListener(() =>
         {
@@ -33,11 +33,11 @@ public class UIManager : Singleton<UIManager>
         GameManager.Instance.OnGameStateChanged.AddListener(HandleGameStateChange);
     }
 
-    private void SwitchToMenuWithButton(Button button, MonoBehaviour to)
+    private void SwitchMenusWithButton(Button button, MonoBehaviour from, MonoBehaviour to)
     {
         button.onClick.AddListener(() =>
         {
-            button.gameObject.SetActive(false);
+            from.gameObject.SetActive(false);
             to.gameObject.SetActive(true);
         });
     }

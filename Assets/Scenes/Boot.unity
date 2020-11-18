@@ -1557,7 +1557,7 @@ MonoBehaviour:
   firstButtonPosition: {x: 340, y: 900, z: 0}
   buttonOffset: {x: 620, y: -125, z: 0}
   maxSumHeight: 600
-  backButton: {fileID: 0}
+  backButton: {fileID: 608931668}
   nextButton: {fileID: 14383458}
   levelNames:
   - "\u0422\u0435\u0441\u0442\u043E\u0432\u044B\u0439"
