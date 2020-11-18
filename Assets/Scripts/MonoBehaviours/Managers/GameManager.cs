@@ -12,10 +12,18 @@ public class GameManager : Singleton<GameManager>
         PAUSED
     }
 
+    private Dictionary<string, string> levelNameConverter =
+        new Dictionary<string, string>
+        {
+            { "Тестовый", "TestLevel" }
+        };
+
     public Events.EventGameState OnGameStateChanged;
     public Events.EventPlayerPassedFinish OnPlayerPassedFinish;
+    public Events.EventNextLevelSelected OnMapSelected;
 
     public GameState CurrentGameState { get; private set; } = GameState.PREGAME;
+    private string nextLevelName = string.Empty;
     private string currentLevelName = string.Empty;
 
     public LapInfoManager lapInfoManager;
@@ -25,6 +33,7 @@ public class GameManager : Singleton<GameManager>
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
+        OnMapSelected.AddListener(HandleNextLevelSelected);
     }
 
     private void Update()
@@ -34,6 +43,16 @@ public class GameManager : Singleton<GameManager>
 
         if (Input.GetKeyDown(KeyCode.Escape))
             TogglePause();
+    }
+
+    private void HandleNextLevelSelected(string nextLevelName)
+    {
+        this.nextLevelName = levelNameConverter[nextLevelName];
+    }
+    
+    private void HandleCarsSelected(Car player0Car, Car player1Car)
+    {
+
     }
 
     #region Level load
@@ -93,7 +112,7 @@ public class GameManager : Singleton<GameManager>
 
     public void StartGame()
     {
-        LoadLevel("TestLevel");
+        LoadLevel(nextLevelName);
     }
 
     public void TogglePause()

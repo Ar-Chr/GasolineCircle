@@ -8,5 +8,9 @@ public class Player : MonoBehaviour
 {
     public new string name;
 
-    public PlayerMovementRigidbody movementScript;
+    private PlayerMovementRigidbody movementScript;
+    private ControlsSet_SO controls;
+    public Car car;
+
+
 }
