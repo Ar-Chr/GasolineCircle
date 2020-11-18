@@ -15,4 +15,9 @@ public class CarSpecs_SO : ScriptableObject
     [Space]
     public float rotationSpeed;
     public float brakesRotationSpeed;
+    [Space]
+    [Space]
+    public float durability;
+    public float fuel;
+    public float fuelRate;
 }

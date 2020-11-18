@@ -10,16 +10,38 @@ public class PlayerMovementRigidbody : MonoBehaviour
     [Space]
     [SerializeField] private ControlsSet_SO controls;
 
-    private float airDrag;
+    private float acceleration;
+    private float topSpeed;
     private float reverseAcceleration;
+
+    private float airDrag;
+    private float rollingDrag;
+    private float brakesDrag;
+    private float sideDrag;
+    private float brakesSideDrag;
+
+    private float rotationSpeed;
+    private float brakesRotationSpeed;
 
     private new Rigidbody rigidbody;
 
+    public void SetSpecs(CarSpecs_SO specs)
+    {
+        acceleration = specs.acceleration;
+        topSpeed = specs.topSpeed;
+        brakesDrag = specs.brakesDrag;
+        sideDrag = specs.sideDrag;
+        brakesSideDrag = specs.brakesSideDrag;
+        rotationSpeed = specs.rotationSpeed;
+        brakesRotationSpeed = specs.brakesRotationSpeed;
+
+        airDrag = acceleration / (topSpeed * topSpeed + 30 * topSpeed);
+        rollingDrag = 30 * airDrag;
+        reverseAcceleration = airDrag * (specs.reverseTopSpeed * specs.reverseTopSpeed + 30 * specs.reverseTopSpeed);
+    }
+
     private void Start()
     {
-        airDrag = specs.acceleration / specs.topSpeed;
-        reverseAcceleration = airDrag * specs.reverseTopSpeed;
-
         rigidbody = GetComponent<Rigidbody>();
         rigidbody.useGravity = false;
         rigidbody.isKinematic = false;
@@ -34,23 +56,23 @@ public class PlayerMovementRigidbody : MonoBehaviour
     private void FixedUpdate()
     {
         float drag = airDrag;
-        float sideDrag = specs.sideDrag;
-        float rotSpeed = specs.rotationSpeed;
+        float sideDrag = this.sideDrag;
+        float rotSpeed = rotationSpeed;
 
         Vector3 localSpaceVelocity = transform.InverseTransformDirection(rigidbody.velocity);
         float forwardVelocity = localSpaceVelocity.z;
 
         if (HoldingForward)
-            Accelerate(Time.fixedDeltaTime, Vector3.forward * specs.acceleration);
+            Accelerate(Time.fixedDeltaTime, Vector3.forward * acceleration);
 
         if (HoldingBackward)
         {
             if (forwardVelocity > 0.1)
             {
-                sideDrag = specs.brakesSideDrag;
-                drag = specs.brakesDrag;
-                rotSpeed = GetBrakesRotationSpeed(specs.rotationSpeed, specs.brakesRotationSpeed,
-                                                  rigidbody.velocity.magnitude, specs.topSpeed);
+                sideDrag = brakesSideDrag;
+                drag = brakesDrag;
+                rotSpeed = GetBrakesRotationSpeed(rotationSpeed, brakesRotationSpeed,
+                                                  rigidbody.velocity.magnitude, topSpeed);
             }
             else
             {
@@ -62,7 +84,7 @@ public class PlayerMovementRigidbody : MonoBehaviour
                (HoldingLeft ? -rotSpeed : 0) + 
                (HoldingRight ? rotSpeed : 0), 
                forwardVelocity, 
-               specs.topSpeed);
+               topSpeed);
 
         ApplyComplexDrag(Time.fixedDeltaTime, localSpaceVelocity, drag, sideDrag);
     }
