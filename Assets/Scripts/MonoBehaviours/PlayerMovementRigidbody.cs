@@ -6,25 +6,22 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovementRigidbody : MonoBehaviour
 {
-    private CarSpecs_SO specs;
     private ControlsSet_SO controls;
 
-    private float acceleration;
+    [HideInInspector] public float acceleration;
     private float topSpeed;
-    private float reverseAcceleration;
+    [HideInInspector] public float reverseAcceleration;
 
     private float airDrag;
     private float rollingDrag;
-    private float brakesDrag;
-    private float sideDrag;
-    private float brakesSideDrag;
+    [HideInInspector] public float brakesDrag;
+    [HideInInspector] public float sideDrag;
+    [HideInInspector] public float brakesSideDrag;
 
-    private float rotationSpeed;
-    private float brakesRotationSpeed;
+    [HideInInspector] public float rotationSpeed;
+    [HideInInspector] public float brakesRotationSpeed;
 
     private new Rigidbody rigidbody;
-
-    [HideInInspector] public float accelerationModifiers;
 
     public void SetSpecs(CarSpecs_SO specs)
     {
