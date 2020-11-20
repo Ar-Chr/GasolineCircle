@@ -6,9 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovementRigidbody : MonoBehaviour
 {
-    [SerializeField] private CarSpecs_SO specs;
-    [Space]
-    [SerializeField] private ControlsSet_SO controls;
+    private CarSpecs_SO specs;
+    private ControlsSet_SO controls;
 
     private float acceleration;
     private float topSpeed;
@@ -40,18 +39,13 @@ public class PlayerMovementRigidbody : MonoBehaviour
         reverseAcceleration = airDrag * (specs.reverseTopSpeed * specs.reverseTopSpeed + 30 * specs.reverseTopSpeed);
     }
 
+    public void SetControls(ControlsSet_SO controls) => this.controls = controls;
+
     private void Start()
     {
-        SetSpecs(specs);
         rigidbody = GetComponent<Rigidbody>();
         rigidbody.useGravity = false;
         rigidbody.isKinematic = false;
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(controls.abilityButton))
-            DropMine();
     }
 
     private void FixedUpdate()
@@ -112,10 +106,5 @@ public class PlayerMovementRigidbody : MonoBehaviour
     private float GetBrakesRotationSpeed(float normalRotSpeed, float brakesTopRotSpeed, float velocity, float topSpeed)
     {
         return Mathf.Lerp(normalRotSpeed, brakesTopRotSpeed, velocity / (topSpeed * 0.6f));
-    }
-
-    private void DropMine() // Хочу вынести в отдельный класс
-    {
-        Debug.Log("Dropping mine!");
     }
 }

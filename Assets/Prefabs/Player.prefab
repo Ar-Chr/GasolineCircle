@@ -64,7 +64,7 @@ CapsuleCollider:
   m_Radius: 0.75
   m_Height: 3.85
   m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0.04}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4876317034491025569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77,8 +77,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 481709c069d4b9a4caaa68fb64609ecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  specs: {fileID: 0}
-  controls: {fileID: 0}
 --- !u!114 &-4629455124326872059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,10 +90,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: 
-  car:
-    name: 
-    sprite: {fileID: 0}
-    specs: {fileID: 0}
+  movementScript: {fileID: 0}
+  controls: {fileID: 0}
 --- !u!1 &5538249816178415543
 GameObject:
   m_ObjectHideFlags: 0

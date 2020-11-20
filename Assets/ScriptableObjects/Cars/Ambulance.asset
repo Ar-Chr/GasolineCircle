@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f45611a0a3d9dd4faa2a931bdaf68c2, type: 3}
   m_Name: Ambulance
   m_EditorClassIdentifier: 
-  name: 
-  sprite: {fileID: 0}
-  specs: {fileID: 0}
-  planePrefab: {fileID: 0}
-  capsuleColliderRadius: 0
-  capsuleColliderLength: 0
-  capsuleColliderZOffset: 0
+  name: Ambulance
+  sprite: {fileID: 21300000, guid: bb559fa1a2e79a4409a4a6f4861572f0, type: 3}
+  specs: {fileID: 11400000, guid: 39abe8d88df246d4faf8d579dd379f28, type: 2}
+  planePrefab: {fileID: 8602827804960227464, guid: 8174262a9d0664448b5933a58528b35d,
+    type: 3}
+  capsuleColliderRadius: 0.85
+  capsuleColliderLength: 4.15

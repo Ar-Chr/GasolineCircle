@@ -14,7 +14,7 @@ public class CarSelectMenu : MonoBehaviour
     [SerializeField] private CarSelectionArea player0;
     [SerializeField] private CarSelectionArea player1;
 
-    private void Start()
+    private void Awake()
     {
         player0.carSelectMenu = this;
         player1.carSelectMenu = this;
@@ -22,6 +22,17 @@ public class CarSelectMenu : MonoBehaviour
             GameManager.Instance.CarsSelected(player0.CurrentCar, player1.CurrentCar));
         playButton.onClick.AddListener(() =>
             GameManager.Instance.NamesSelected(player0.playerNameInput.text, player1.playerNameInput.text));
+
+        player0.Start();
+        player1.Start();
+    }
+
+    private void OnEnable()
+    {
+        player0.ResetCurrentCarNumber();
+        player0.ShowCurrentCar();
+        player1.ResetCurrentCarNumber();
+        player1.ShowCurrentCar();
     }
 }
 
@@ -38,12 +49,12 @@ public class CarSelectionArea
     [SerializeField] private Text fuelText;
     [SerializeField] private Text fuelRateText;
 
-    [HideInInspector] public CarSelectMenu carSelectMenu;
+     public CarSelectMenu carSelectMenu;
 
     private int currentCarNumber;
     public Car_SO CurrentCar => carSelectMenu.carsForChoice[currentCarNumber];
 
-    private void Start()
+    public void Start()
     {
         leftArrow.onClick.AddListener(PreviousCar);
         rightArrow.onClick.AddListener(NextCar);
@@ -53,6 +64,8 @@ public class CarSelectionArea
     {
         if (currentCarNumber == 0)
             currentCarNumber = carSelectMenu.carsForChoice.Length - 1;
+        else
+            currentCarNumber--;
 
         ShowCurrentCar();
     }
@@ -61,11 +74,13 @@ public class CarSelectionArea
     {
         if (currentCarNumber == carSelectMenu.carsForChoice.Length - 1)
             currentCarNumber = 0;
+        else
+            currentCarNumber++;
 
         ShowCurrentCar();
     }
 
-    private void ShowCurrentCar()
+    public void ShowCurrentCar()
     {
         carImage.sprite = CurrentCar.sprite;
         durabilityText.text = CurrentCar.specs.durability.ToString();
@@ -73,9 +88,5 @@ public class CarSelectionArea
         fuelRateText.text = CurrentCar.specs.fuelRate.ToString();
     }
 
-    private void OnEnable()
-    {
-        currentCarNumber = 0;
-        ShowCurrentCar();
-    }
+    public void ResetCurrentCarNumber() => currentCarNumber = 0;
 }

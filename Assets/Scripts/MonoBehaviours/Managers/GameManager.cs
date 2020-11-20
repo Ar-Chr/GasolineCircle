@@ -36,6 +36,7 @@ public class GameManager : Singleton<GameManager>
     {
         DontDestroyOnLoad(gameObject);
         OnMapSelected.AddListener(HandleNextLevelSelected);
+        OnPlayerPassedFinish.AddListener(HandlePlayerPassedFinish);
     }
 
     private void Update()
@@ -88,6 +89,17 @@ public class GameManager : Singleton<GameManager>
         players[1].Initialize(name1, car1);
 
         ChangeGameStateTo(GameState.RUNNING);
+    }
+
+    private void HandlePlayerPassedFinish(Player player)
+    {
+        if (lapInfoManager.Laps(player) == 10)
+            Victory(player);
+    }
+
+    private void Victory(Player player)
+    {
+
     }
 
     #endregion

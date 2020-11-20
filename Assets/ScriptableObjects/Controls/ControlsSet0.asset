@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c66ccfda80547344ba1152bbce8e62cf, type: 3}
-  m_Name: ControlsSet1
+  m_Name: ControlsSet0
   m_EditorClassIdentifier: 
-  forwardButton: 273
-  leftButton: 276
-  rightButton: 275
-  backwardButton: 274
-  brakesButton: 256
-  abilityButton: 305
+  forwardButton: 119
+  leftButton: 97
+  rightButton: 100
+  backwardButton: 115
+  abilityButton: 304

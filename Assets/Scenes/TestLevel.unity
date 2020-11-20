@@ -2585,6 +2585,12 @@ PrefabInstance:
       propertyPath: movementScript
       value: 
       objectReference: {fileID: 430419688}
+    - target: {fileID: -4629455124326872059, guid: 5a2066facd24f0f47980729462728dab,
+        type: 3}
+      propertyPath: controls
+      value: 
+      objectReference: {fileID: 11400000, guid: c8f9c9ed0d9f57742beb40d3044dcf0e,
+        type: 2}
     - target: {fileID: 4876317034430933292, guid: 5a2066facd24f0f47980729462728dab,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2661,6 +2667,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5538249816178415543, guid: 5a2066facd24f0f47980729462728dab,
+        type: 3}
+      propertyPath: m_Name
+      value: AmbulancePlane
       objectReference: {fileID: 0}
     - target: {fileID: 7326211912713142159, guid: 5a2066facd24f0f47980729462728dab,
         type: 3}
@@ -4441,6 +4452,17 @@ PrefabInstance:
       propertyPath: name
       value: Player0
       objectReference: {fileID: 0}
+    - target: {fileID: -4629455124326872059, guid: 5a2066facd24f0f47980729462728dab,
+        type: 3}
+      propertyPath: controls
+      value: 
+      objectReference: {fileID: 11400000, guid: c40c504bde60553459710c1aadb7a9ce,
+        type: 2}
+    - target: {fileID: 4641040818222398906, guid: 5a2066facd24f0f47980729462728dab,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4876317034430933294, guid: 5a2066facd24f0f47980729462728dab,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -4527,6 +4549,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5538249816178415543, guid: 5a2066facd24f0f47980729462728dab,
+        type: 3}
+      propertyPath: m_Name
+      value: TruckPlane
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a2066facd24f0f47980729462728dab, type: 3}

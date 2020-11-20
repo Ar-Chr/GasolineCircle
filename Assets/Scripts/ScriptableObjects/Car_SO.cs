@@ -13,5 +13,4 @@ public class Car_SO : ScriptableObject
 
     public float capsuleColliderRadius;
     public float capsuleColliderLength;
-    public float capsuleColliderZOffset;
 }
