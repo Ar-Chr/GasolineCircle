@@ -33,10 +33,10 @@ public class MapSelectMenu : MonoBehaviour
 
         GameManager.Instance.OnMapSelected.AddListener((string whatever) => mapSelected = true);
         nextButton.onClick.AddListener(() =>
-        {
-            if (!mapSelected)
-                randomButton.onClick.Invoke();
-        });
+            {
+                if (!mapSelected)
+                    randomButton.onClick.Invoke();
+            });
     }
 
     private void CreateAllButtons()

@@ -21,6 +21,7 @@ public class GameManager : Singleton<GameManager>
     public Events.EventGameState OnGameStateChanged;
     public Events.EventPlayerPassedFinish OnPlayerPassedFinish;
     public Events.EventNextLevelSelected OnMapSelected;
+    public Events.EventPlayerWon OnPlayerWon;
 
     public GameState CurrentGameState { get; private set; } = GameState.PREGAME;
     private string nextLevelName = string.Empty;
@@ -60,8 +61,7 @@ public class GameManager : Singleton<GameManager>
     }
 
     public void NamesSelected(string name0, string name1)
-    {
-        
+    {        
         this.name0 = string.IsNullOrWhiteSpace(name0) ? "Игрок 1" : name0;
         this.name1 = string.IsNullOrWhiteSpace(name1) ? "Игрок 2" : name1;
     }
@@ -94,13 +94,13 @@ public class GameManager : Singleton<GameManager>
     private void HandlePlayerPassedFinish(Player player)
     {
         if (lapInfoManager.Laps(player) == 10)
-            Victory(player);
+            OnPlayerWon.Invoke(player);
     }
 
-    private void Victory(Player player)
-    {
+    //private void HandlePlayerWon(Player player)
+    //{
 
-    }
+    //}
 
     #endregion
 

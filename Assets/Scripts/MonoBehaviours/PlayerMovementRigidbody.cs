@@ -24,6 +24,8 @@ public class PlayerMovementRigidbody : MonoBehaviour
 
     private new Rigidbody rigidbody;
 
+    [HideInInspector] public float accelerationModifiers;
+
     public void SetSpecs(CarSpecs_SO specs)
     {
         acceleration = specs.acceleration;
