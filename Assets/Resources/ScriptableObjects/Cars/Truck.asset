@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Truck
   m_EditorClassIdentifier: 
   name: "\u041F\u0438\u043A\u0430\u043F"
+  decription: 
   sprite: {fileID: 21300000, guid: 85d6beac211d8c24b8113059d5e6b884, type: 3}
   planePrefab: {fileID: 571166129298583303, guid: e5c62ca30ee295643b65dd1737d09dbd,
     type: 3}
   specs: {fileID: 11400000, guid: 4dcc96b26af53f44589a4515448f06af, type: 2}
   abilityClassName: DropScrapPile
-  objectSpawnPosition: {x: 0, y: 0, z: -2.55}
+  objectSpawnPosition: {x: 0, y: -0.1, z: -2.55}
   capsuleColliderRadius: 0.72
   capsuleColliderLength: 3.85

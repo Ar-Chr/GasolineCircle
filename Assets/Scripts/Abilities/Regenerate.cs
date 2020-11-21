@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Regenerate : Ability
 {
-    protected override string AbilityInfoName => throw new System.NotImplementedException();
+    protected override string AbilityInfoName => "RegenerateInfo";
+
+    private Regeneration regeneration = new Regeneration(10, 2, 2);
 
     protected override void Use(Player player)
     {
-        throw new System.NotImplementedException();
+        player.AddEffect(regeneration);
     }
 }

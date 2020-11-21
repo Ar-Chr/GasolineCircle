@@ -77,6 +77,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 481709c069d4b9a4caaa68fb64609ecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acceleration: 0
+  reverseAcceleration: 0
+  brakesDrag: 0
+  sideDrag: 0
+  brakesSideDrag: 0
+  rotationSpeed: 0
+  brakesRotationSpeed: 0
 --- !u!114 &-4629455124326872059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,9 +96,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16509f76d0fe46248b79a2ef62c836f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
-  movementScript: {fileID: 0}
-  controls: {fileID: 0}
+  name: Player0
+  movementScript: {fileID: 4876317034491025569}
+  controls: {fileID: 11400000, guid: c40c504bde60553459710c1aadb7a9ce, type: 2}
+  car: {fileID: 0}
+  damageThreshold: 4
+  carStats:
+    durability: 0
+    fuel: 0
+    fuelRate: 0
 --- !u!1 &5538249816178415543
 GameObject:
   m_ObjectHideFlags: 0

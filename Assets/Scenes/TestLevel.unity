@@ -1300,18 +1300,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4876317033468967575}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &673024307 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4876317034491025569, guid: 5a2066facd24f0f47980729462728dab,
-    type: 3}
-  m_PrefabInstance: {fileID: 4876317033468967575}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 673024305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 481709c069d4b9a4caaa68fb64609ecd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -4452,22 +4440,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -4629455124326872059, guid: 5a2066facd24f0f47980729462728dab,
-        type: 3}
-      propertyPath: movementScript
-      value: 
-      objectReference: {fileID: 673024307}
-    - target: {fileID: -4629455124326872059, guid: 5a2066facd24f0f47980729462728dab,
-        type: 3}
-      propertyPath: name
-      value: Player0
-      objectReference: {fileID: 0}
-    - target: {fileID: -4629455124326872059, guid: 5a2066facd24f0f47980729462728dab,
-        type: 3}
-      propertyPath: controls
-      value: 
-      objectReference: {fileID: 11400000, guid: c40c504bde60553459710c1aadb7a9ce,
-        type: 2}
     - target: {fileID: 2627866793767181612, guid: 5a2066facd24f0f47980729462728dab,
         type: 3}
       propertyPath: m_LocalPosition.x

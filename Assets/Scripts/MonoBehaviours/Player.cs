@@ -14,9 +14,10 @@ public class Player : MonoBehaviour
     public PlayerMovementRigidbody movementScript;
     [SerializeField] private ControlsSet_SO controls;
     [HideInInspector] public Car_SO car;
+    [SerializeField] private float damageThreshold;
 
-    private List<Status> statuses = new List<Status>();
-    private CarStats carStats;
+    private List<Status> statuses;
+    public CarStats carStats;
 
     public void Initialize(string name, Car_SO car)
     {
@@ -35,23 +36,33 @@ public class Player : MonoBehaviour
         capsuleCollider.radius = car.capsuleColliderRadius;
         capsuleCollider.height = car.capsuleColliderLength;
 
-        carStats = new CarStats(car.specs.durability, 
-                                car.specs.fuel, 
+        carStats = new CarStats(car.specs.durability,
+                                car.specs.fuel,
                                 car.specs.fuelRate);
 
         movementScript.SetSpecs(car.specs);
         movementScript.SetControls(controls);
     }
 
+    private void Start()
+    {
+        statuses = new List<Status>();
+    }
+
     private void FixedUpdate()
     {
-        if(Input.GetKey(controls.forwardButton) || Input.GetKey(controls.backwardButton))
-        foreach (var status in statuses)
+        if (Input.GetKey(controls.forwardButton) || Input.GetKey(controls.backwardButton))
         {
+            carStats.BurnFuel(Time.fixedDeltaTime);
+        }
+        for (int i = 0; i < statuses.Count; i++)
+        {
+            Status status = statuses[i];
             if (Time.time >= status.expireTime)
             {
-                statuses.Remove(status);
+                statuses.RemoveAt(i);
                 status.RemoveEffect(this);
+                i--;
             }
         }
     }
@@ -77,7 +88,7 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         float relativeVelocity = collision.relativeVelocity.magnitude;
-        if (relativeVelocity > 2.7)
+        if (relativeVelocity > damageThreshold)
         {
             carStats.TakeDamage(relativeVelocity * 0.3f);
             Debug.Log($"Relative velocity = {relativeVelocity: 0.0}\n {relativeVelocity * 0.3f: 0.0} damage taken");
