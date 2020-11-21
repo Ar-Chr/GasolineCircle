@@ -12,12 +12,6 @@ public class GameManager : Singleton<GameManager>
         PAUSED
     }
 
-    private Dictionary<string, string> levelNameConverter =
-        new Dictionary<string, string>
-        {
-            { "Тестовый", "TestLevel" }
-        };
-
     public Events.EventGameState OnGameStateChanged;
     public Events.EventPlayerPassedFinish OnPlayerPassedFinish;
     public Events.EventNextLevelSelected OnMapSelected;
@@ -51,7 +45,7 @@ public class GameManager : Singleton<GameManager>
 
     private void HandleNextLevelSelected(string nextLevelName)
     {
-        this.nextLevelName = levelNameConverter[nextLevelName];
+        this.nextLevelName = nextLevelName;
     }
     
     public void CarsSelected(Car_SO player0Car, Car_SO player1Car)
