@@ -6,5 +6,7 @@ using UnityEngine;
 public class Map_SO : ScriptableObject
 {
     public Sprite background;
+    public new string name;
     public string description;
+    public string sceneName;
 }

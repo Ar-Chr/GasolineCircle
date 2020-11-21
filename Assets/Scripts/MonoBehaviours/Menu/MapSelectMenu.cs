@@ -6,84 +6,58 @@ using UnityEngine.UI;
 
 public class MapSelectMenu : MonoBehaviour
 {
+    [SerializeField] private Button leftArrow;
+    [SerializeField] private Button rightArrow;
+    [SerializeField] private Image mapImage;
+    [SerializeField] private Text mapName;
     [SerializeField] private Text mapDescription;
-    [SerializeField] private GameObject buttonPrefab;
-    [SerializeField] private Vector3 firstButtonPosition;
-    [SerializeField] private Vector3 buttonOffset;
-    [SerializeField] private float maxSumHeight;
     [Space]
     public Button backButton;
     public Button nextButton;
     [Space]
-    [SerializeField] private string[] levelNames;
+    [SerializeField] Map_SO[] mapsForChoice;
 
-    private Button[] buttons;
-    [SerializeField] Button randomButton;
-    private float buttonHeight;
-    private float offsetHeight;
+    private int currentMapNumber;
+    private Map_SO CurrentMap => mapsForChoice[currentMapNumber];
 
-    private bool mapSelected;
-
-    private void Start()
+    public void Start()
     {
-        buttonHeight = buttonPrefab.GetComponent<RectTransform>().rect.height;
-        offsetHeight = Mathf.Abs(buttonOffset.y);
-
-        CreateAllButtons();
-        AddOnClickToAllButtons();
-
-        GameManager.Instance.OnMapSelected.AddListener((string whatever) => mapSelected = true);
-        nextButton.onClick.AddListener(() =>
-            {
-                if (!mapSelected)
-                    randomButton.onClick.Invoke();
-            });
+        leftArrow.onClick.AddListener(PreviousMap);
+        rightArrow.onClick.AddListener(NextMap);
+        nextButton.onClick.AddListener(() => 
+            GameManager.Instance.OnMapSelected.Invoke(CurrentMap.sceneName));
     }
 
-    private void CreateAllButtons()
+    private void OnEnable()
     {
-        buttons = new Button[levelNames.Length];
-        Vector3 lastButtonPosition = firstButtonPosition - new Vector3(0, buttonOffset.y, 0);
-        float sumHeight = buttonHeight;
-        for (int i = 0; i < levelNames.Length; i++)
-        {
-            GameObject buttonObj = CreateButton(ref sumHeight, ref lastButtonPosition);
-            buttonObj.GetComponentInChildren<Text>().text = levelNames[i];
-            buttons[i] = buttonObj.GetComponent<Button>();
-        }
-        randomButton = CreateButton(ref sumHeight, ref lastButtonPosition).GetComponent<Button>();
-        randomButton.GetComponentInChildren<Text>().text = "Случайный";
+        currentMapNumber = 0;
+        ShowCurrentMap();
     }
 
-    private GameObject CreateButton(ref float sumHeight, ref Vector3 lastButtonPosition)
+    private void PreviousMap()
     {
-        float x, y;
-        if (sumHeight > maxSumHeight)
-        {
-            sumHeight = buttonHeight + offsetHeight;
-            x = lastButtonPosition.x + buttonOffset.x;
-            y = firstButtonPosition.y;
-        }
+        if (currentMapNumber == 0)
+            currentMapNumber = mapsForChoice.Length - 1;
         else
-        {
-            sumHeight += offsetHeight;
-            x = lastButtonPosition.x;
-            y = lastButtonPosition.y + buttonOffset.y;
-        }
-        Vector3 buttonPosition = new Vector3(x, y, 0);
-        lastButtonPosition = buttonPosition;
-        return Instantiate(buttonPrefab, buttonPosition, Quaternion.identity, transform);
+            currentMapNumber--;
+
+        ShowCurrentMap();
     }
 
-    private void AddOnClickToAllButtons()
+    private void NextMap()
     {
-        foreach (Button button in buttons)
-        {
-            string levelName = button.gameObject.GetComponentInChildren<Text>().text;
-            button.onClick.AddListener(() =>
-                GameManager.Instance.OnMapSelected.Invoke(levelName));
-        }
-        randomButton.onClick.AddListener(() =>
-            GameManager.Instance.OnMapSelected.Invoke(levelNames[Random.Range(0, levelNames.Length)]));
+        if (currentMapNumber == mapsForChoice.Length - 1)
+            currentMapNumber = 0;
+        else
+            currentMapNumber++;
+
+        ShowCurrentMap();
+    }
+
+    public void ShowCurrentMap()
+    {
+        mapImage.sprite = CurrentMap.background;
+        mapName.text = CurrentMap.name;
+        mapDescription.text = CurrentMap.description;       
     }
 }
