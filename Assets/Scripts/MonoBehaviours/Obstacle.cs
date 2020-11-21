@@ -5,6 +5,8 @@ using System;
 
 public class Obstacle : MonoBehaviour
 {
+    [SerializeField] private float destructionThreshold;
+    [Space]
     [SerializeField] private string inflictedStatusClassName;
     private Status inflictedStatus;
 
@@ -21,9 +23,12 @@ public class Obstacle : MonoBehaviour
         var player = collision.gameObject.GetComponent<Player>();
         if (player != null)
         {
-            if (inflictedStatus != null)
-                player.AddEffect(inflictedStatus);
-            Destroy(gameObject);
+            if (collision.relativeVelocity.magnitude > destructionThreshold)
+            {
+                if (inflictedStatus != null)
+                    player.AddEffect(inflictedStatus);
+                Destroy(gameObject);
+            }
         }
     }
 }
