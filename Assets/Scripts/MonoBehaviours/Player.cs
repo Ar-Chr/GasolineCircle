@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,6 @@ public class Player : MonoBehaviour
 {
     public new string name;
     [Space]
-    public Vector3 objectsSpawnPosition;
     [SerializeField] private Ability ability;
     [Space]
     public PlayerMovementRigidbody movementScript;
@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
     {
         this.name = name;
         this.car = car;
+        Type abilityType = Type.GetType(car.abilityClassName);
+        ability = (Ability)abilityType.GetConstructor(new Type[0] ).Invoke(new object[0]);
 
         for (int i = 0; i < transform.childCount; i++)
         {
@@ -78,8 +80,8 @@ public class Player : MonoBehaviour
         float relativeVelocity = collision.relativeVelocity.magnitude;
         if (relativeVelocity > 2.7)
         {
-            carStats.TakeDamage(relativeVelocity * 0.3);
-            Debug.Log($"Relative velocity = {relativeVelocity: 0.0}\n {relativeVelocity * 0.3: 0.0} damage taken");
+            carStats.TakeDamage(relativeVelocity * 0.3f);
+            Debug.Log($"Relative velocity = {relativeVelocity: 0.0}\n {relativeVelocity * 0.3f: 0.0} damage taken");
         }
         // Take damage = collision.relativeVelocity * 0.3;
     }

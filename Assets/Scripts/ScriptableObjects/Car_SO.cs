@@ -6,11 +6,14 @@ using UnityEngine;
 public class Car_SO : ScriptableObject
 {
     public new string name;
+    [Space]
     public Sprite sprite;
-    public CarSpecs_SO specs;
-
     public GameObject planePrefab;
-
+    [Space]
+    public CarSpecs_SO specs;
+    public string abilityClassName;
+    public Vector3 objectSpawnPosition;
+    [Space]
     public float capsuleColliderRadius;
     public float capsuleColliderLength;
 }

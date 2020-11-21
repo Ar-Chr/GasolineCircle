@@ -2,12 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DropOil : Ability
+public class DropOil : ObstacleSpawnAbility
 {
-    [SerializeField] private GameObject oil;
-
-    protected override void Use(Player player)
-    {
-        Object.Instantiate(oil, player.objectsSpawnPosition, Quaternion.identity);
-    }
+    protected override string ObstacleName { get; } = "Oil";
 }

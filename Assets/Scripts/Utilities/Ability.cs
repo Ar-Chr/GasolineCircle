@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
 public abstract class Ability
 {
+    public Sprite abilitySprite;
+    [Space]
     [SerializeField] protected float cooldown;
 
     protected float nextUse;

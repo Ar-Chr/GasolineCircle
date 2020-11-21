@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boost : Ability
+public class Regenerate : Ability
 {
     protected override void Use(Player player)
     {

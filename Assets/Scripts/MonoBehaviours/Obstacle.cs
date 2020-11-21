@@ -1,10 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Obstacle : MonoBehaviour
 {
-    [SerializeField] private Status inflictedStatus;
+    [SerializeField] private string inflictedStatusClassName;
+    private Status inflictedStatus;
+
+    private void Start()
+    {
+        inflictedStatus = (Status)Type
+            .GetType(inflictedStatusClassName)
+            ?.GetConstructor(new Type[0])
+            .Invoke(new object[0]);
+    }
 
     private void OnCollisionEnter(Collision collision)
     {

@@ -44,6 +44,7 @@ public class CarSelectionArea
     [SerializeField] private Button leftArrow;
     [SerializeField] private Button rightArrow;
     [SerializeField] private Image carImage;
+    [SerializeField] private Text carName;
     [Space]
     [SerializeField] private Text durabilityText;
     [SerializeField] private Text fuelText;
@@ -81,8 +82,9 @@ public class CarSelectionArea
     }
 
     public void ShowCurrentCar()
-    {
+    {        
         carImage.sprite = CurrentCar.sprite;
+        carName.text = CurrentCar.name;
         durabilityText.text = CurrentCar.specs.durability.ToString();
         fuelText.text = CurrentCar.specs.fuel.ToString();
         fuelRateText.text = CurrentCar.specs.fuelRate.ToString();

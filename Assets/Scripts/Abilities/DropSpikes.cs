@@ -2,12 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DropSpikes : Ability
+public class DropSpikes : ObstacleSpawnAbility
 {
-    [SerializeField] private GameObject spikes;
-
-    protected override void Use(Player player)
-    {
-        Object.Instantiate(spikes, player.objectsSpawnPosition, Quaternion.identity);
-    }
+    protected override string ObstacleName { get; } = "Spikes";
 }

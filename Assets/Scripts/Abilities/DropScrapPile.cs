@@ -2,12 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DropScrapPile : Ability
+public class DropScrapPile : ObstacleSpawnAbility
 {
-    [SerializeField] private GameObject scrapPile;
-
-    protected override void Use(Player player)
-    {
-        Object.Instantiate(scrapPile, player.objectsSpawnPosition, Quaternion.identity);
-    }
+    protected override string ObstacleName { get; } = "ScrapPile";
 }
