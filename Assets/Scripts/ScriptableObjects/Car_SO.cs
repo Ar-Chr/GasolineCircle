@@ -6,6 +6,7 @@ using UnityEngine;
 public class Car_SO : ScriptableObject
 {
     public new string name;
+    public string decription;
     [Space]
     public Sprite sprite;
     public GameObject planePrefab;

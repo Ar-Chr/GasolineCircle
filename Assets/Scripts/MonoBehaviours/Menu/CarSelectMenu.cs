@@ -45,12 +45,14 @@ public class CarSelectionArea
     [SerializeField] private Button rightArrow;
     [SerializeField] private Image carImage;
     [SerializeField] private Text carName;
+    [SerializeField] private Text carDescription;
     [Space]
     [SerializeField] private Text durabilityText;
     [SerializeField] private Text fuelText;
     [SerializeField] private Text fuelRateText;
+    [SerializeField] private Text topSpeedText;
 
-     public CarSelectMenu carSelectMenu;
+    public CarSelectMenu carSelectMenu;
 
     private int currentCarNumber;
     public Car_SO CurrentCar => carSelectMenu.carsForChoice[currentCarNumber];
@@ -85,9 +87,11 @@ public class CarSelectionArea
     {        
         carImage.sprite = CurrentCar.sprite;
         carName.text = CurrentCar.name;
+        carDescription.text = CurrentCar.decription;
         durabilityText.text = CurrentCar.specs.durability.ToString();
         fuelText.text = CurrentCar.specs.fuel.ToString();
         fuelRateText.text = CurrentCar.specs.fuelRate.ToString();
+        topSpeedText.text = CurrentCar.specs.topSpeed.ToString();
     }
 
     public void ResetCurrentCarNumber() => currentCarNumber = 0;

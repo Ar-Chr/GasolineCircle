@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Controls Set", menuName = "Scriptable Objects/Controls Set")]
+[CreateAssetMenu(fileName = "ControlsSet", menuName = "Scriptable Objects/Controls Set")]
 public class ControlsSet_SO : ScriptableObject
 {
     public KeyCode forwardButton;

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class MapSelectMenu : MonoBehaviour
 {
+    [SerializeField] private Text mapDescription;
     [SerializeField] private GameObject buttonPrefab;
     [SerializeField] private Vector3 firstButtonPosition;
     [SerializeField] private Vector3 buttonOffset;
