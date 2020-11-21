@@ -471,6 +471,8 @@ MonoBehaviour:
     fuelText: {fileID: 0}
     fuelRateText: {fileID: 0}
     topSpeedText: {fileID: 0}
+    abilityName: {fileID: 0}
+    abilityIcon: {fileID: 0}
     carSelectMenu: {fileID: 0}
   player1:
     playerNameInput: {fileID: 0}
@@ -483,6 +485,8 @@ MonoBehaviour:
     fuelText: {fileID: 0}
     fuelRateText: {fileID: 0}
     topSpeedText: {fileID: 0}
+    abilityName: {fileID: 0}
+    abilityIcon: {fileID: 0}
     carSelectMenu: {fileID: 0}
 --- !u!114 &91728120
 MonoBehaviour:
@@ -1848,7 +1852,7 @@ GameObject:
   - component: {fileID: 304354133}
   - component: {fileID: 304354132}
   m_Layer: 5
-  m_Name: FuelRateImage
+  m_Name: MaxSpeedImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1922,7 +1926,7 @@ GameObject:
   - component: {fileID: 349881413}
   - component: {fileID: 349881412}
   m_Layer: 5
-  m_Name: FuelRateText
+  m_Name: MaxSpeedText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6101,7 +6105,7 @@ GameObject:
   - component: {fileID: 1203286841}
   - component: {fileID: 1203286840}
   m_Layer: 5
-  m_Name: FuelRateText
+  m_Name: MaxSpeedText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6436,6 +6440,8 @@ MonoBehaviour:
     fuelText: {fileID: 0}
     fuelRateText: {fileID: 0}
     topSpeedText: {fileID: 0}
+    abilityName: {fileID: 0}
+    abilityIcon: {fileID: 0}
     carSelectMenu: {fileID: 0}
   player1:
     playerNameInput: {fileID: 0}
@@ -6448,6 +6454,8 @@ MonoBehaviour:
     fuelText: {fileID: 0}
     fuelRateText: {fileID: 0}
     topSpeedText: {fileID: 0}
+    abilityName: {fileID: 0}
+    abilityIcon: {fileID: 0}
     carSelectMenu: {fileID: 0}
 --- !u!114 &1272415009
 MonoBehaviour:
@@ -6901,24 +6909,28 @@ MonoBehaviour:
     leftArrow: {fileID: 569091925}
     rightArrow: {fileID: 872676470}
     carImage: {fileID: 1913836883}
-    carName: {fileID: 0}
-    carDescription: {fileID: 0}
+    carName: {fileID: 1190016645}
+    carDescription: {fileID: 1931004671}
     durabilityText: {fileID: 1095299966}
     fuelText: {fileID: 214329648}
     fuelRateText: {fileID: 434365056}
-    topSpeedText: {fileID: 0}
+    topSpeedText: {fileID: 1745763511}
+    abilityName: {fileID: 1514853178}
+    abilityIcon: {fileID: 196983228}
     carSelectMenu: {fileID: 0}
   player1:
     playerNameInput: {fileID: 1923215245}
     leftArrow: {fileID: 825482097}
     rightArrow: {fileID: 95519310}
     carImage: {fileID: 123659138}
-    carName: {fileID: 0}
-    carDescription: {fileID: 0}
+    carName: {fileID: 1820225517}
+    carDescription: {fileID: 455225765}
     durabilityText: {fileID: 1328591304}
     fuelText: {fileID: 1510195584}
     fuelRateText: {fileID: 126614125}
-    topSpeedText: {fileID: 0}
+    topSpeedText: {fileID: 1596402908}
+    abilityName: {fileID: 592488535}
+    abilityIcon: {fileID: 280378627}
     carSelectMenu: {fileID: 0}
 --- !u!1 &1379405591
 GameObject:
@@ -7370,6 +7382,8 @@ MonoBehaviour:
     fuelText: {fileID: 0}
     fuelRateText: {fileID: 0}
     topSpeedText: {fileID: 0}
+    abilityName: {fileID: 0}
+    abilityIcon: {fileID: 0}
     carSelectMenu: {fileID: 0}
   player1:
     playerNameInput: {fileID: 0}
@@ -7382,6 +7396,8 @@ MonoBehaviour:
     fuelText: {fileID: 0}
     fuelRateText: {fileID: 0}
     topSpeedText: {fileID: 0}
+    abilityName: {fileID: 0}
+    abilityIcon: {fileID: 0}
     carSelectMenu: {fileID: 0}
 --- !u!114 &1495395639
 MonoBehaviour:
@@ -7705,7 +7721,7 @@ GameObject:
   - component: {fileID: 1549174179}
   - component: {fileID: 1549174178}
   m_Layer: 5
-  m_Name: FuelRateImage
+  m_Name: MaxSpeedImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8092,7 +8108,7 @@ GameObject:
   - component: {fileID: 1596402909}
   - component: {fileID: 1596402908}
   m_Layer: 5
-  m_Name: FuelRateValueText
+  m_Name: MaxSpeedValueText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9015,7 +9031,7 @@ GameObject:
   - component: {fileID: 1745763512}
   - component: {fileID: 1745763511}
   m_Layer: 5
-  m_Name: FuelRateValueText
+  m_Name: MaxSpeedValueText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

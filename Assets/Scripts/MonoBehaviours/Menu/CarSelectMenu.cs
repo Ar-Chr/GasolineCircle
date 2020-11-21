@@ -51,6 +51,9 @@ public class CarSelectionArea
     [SerializeField] private Text fuelText;
     [SerializeField] private Text fuelRateText;
     [SerializeField] private Text topSpeedText;
+    [Space]
+    [SerializeField] private Text abilityName;
+    [SerializeField] private Image abilityIcon;
 
     public CarSelectMenu carSelectMenu;
 
@@ -88,10 +91,14 @@ public class CarSelectionArea
         carImage.sprite = CurrentCar.sprite;
         carName.text = CurrentCar.name;
         carDescription.text = CurrentCar.decription;
+
         durabilityText.text = CurrentCar.specs.durability.ToString();
         fuelText.text = CurrentCar.specs.fuel.ToString();
         fuelRateText.text = CurrentCar.specs.fuelRate.ToString();
         topSpeedText.text = CurrentCar.specs.topSpeed.ToString();
+
+        abilityName.text = CurrentCar.Ability.AbilityInfo.name;
+        abilityIcon.sprite = CurrentCar.Ability.AbilityInfo.abilitySprite;
     }
 
     public void ResetCurrentCarNumber() => currentCarNumber = 0;

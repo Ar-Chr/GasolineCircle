@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2313416876504463610}
   - component: {fileID: 3896091146844834070}
   m_Layer: 0
-  m_Name: ScrapPile
+  m_Name: Spikes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e6c91cd2d2f4f454cb365df0243b3cf1, type: 2}
+  - {fileID: 2100000, guid: 2a8c16aacc96bb14b8c623668f48634a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -89,7 +89,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2061577835948474538}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 10, y: 1, z: 10}
@@ -106,5 +106,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d0e27656d8f89543bdf01d85c24f298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destructionThreshold: 2.7
+  destructionThreshold: 0
   inflictedStatusClassName: 

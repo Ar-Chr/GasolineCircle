@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class DropScrapPile : ObstacleSpawnAbility
 {
-    protected override string ObstacleName { get; } = "ScrapPile";
+    protected override string ObstacleName => "ScrapPile";
+    protected override string AbilityInfoName => "DropScrapPileInfo";
 }

@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class DropOil : ObstacleSpawnAbility
 {
-    protected override string ObstacleName { get; } = "Oil";
+    protected override string ObstacleName => "Oil";
+    protected override string AbilityInfoName => "DropOilInfo";
 }

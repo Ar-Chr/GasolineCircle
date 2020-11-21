@@ -22,8 +22,7 @@ public class Player : MonoBehaviour
     {
         this.name = name;
         this.car = car;
-        Type abilityType = Type.GetType(car.abilityClassName);
-        ability = (Ability)abilityType.GetConstructor(new Type[0] ).Invoke(new object[0]);
+        ability = car.Ability;
 
         for (int i = 0; i < transform.childCount; i++)
         {

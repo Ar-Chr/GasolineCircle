@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,4 +18,21 @@ public class Car_SO : ScriptableObject
     [Space]
     public float capsuleColliderRadius;
     public float capsuleColliderLength;
+
+    private Ability ability;
+    [HideInInspector]
+    public Ability Ability
+    {
+        get
+        {
+            if (ability == null)
+            {
+                Type abilityType = Type.GetType(abilityClassName);
+                ability = (Ability)abilityType.GetConstructor(new Type[0]).Invoke(new object[0]);
+            }
+
+            return ability;
+        }
+    }
+        
 }

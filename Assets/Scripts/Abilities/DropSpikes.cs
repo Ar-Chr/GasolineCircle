@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class DropSpikes : ObstacleSpawnAbility
 {
-    protected override string ObstacleName { get; } = "Spikes";
+    protected override string ObstacleName => "Spikes";
+    protected override string AbilityInfoName => "DropSpikesInfo";
 }

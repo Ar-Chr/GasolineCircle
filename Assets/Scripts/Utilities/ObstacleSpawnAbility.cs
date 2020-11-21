@@ -6,9 +6,15 @@ public abstract class ObstacleSpawnAbility : Ability
 {
     protected abstract string ObstacleName { get; }
 
+    protected GameObject obstacle;
     protected override void Use(Player player)
     {
-        GameObject scrapPile = (GameObject)Resources.Load("Prefabs/Obstacles/" + ObstacleName);
-        Object.Instantiate(scrapPile, player.transform.position + player.car.objectSpawnPosition, Quaternion.identity);
+        if (obstacle == null)
+            obstacle = (GameObject)Resources.Load("Prefabs/Obstacles/" + ObstacleName);
+
+        Object.Instantiate(
+            obstacle, 
+            player.transform.position + player.transform.TransformDirection(player.car.objectSpawnPosition), 
+            Quaternion.identity);
     }
 }

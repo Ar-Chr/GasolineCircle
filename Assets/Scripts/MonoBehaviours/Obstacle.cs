@@ -31,4 +31,15 @@ public class Obstacle : MonoBehaviour
             }
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        var player = other.gameObject.GetComponent<Player>();
+        if (player != null)
+        {
+            if (inflictedStatus != null)
+                player.AddEffect(inflictedStatus);
+            Destroy(gameObject);
+        }
+    }
 }

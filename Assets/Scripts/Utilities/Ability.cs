@@ -4,9 +4,18 @@ using UnityEngine;
 
 public abstract class Ability
 {
-    public Sprite abilitySprite;
-    [Space]
-    [SerializeField] protected float cooldown;
+    protected Ability_SO abilityInfo;
+    public Ability_SO AbilityInfo
+    {
+        get
+        {
+            if (abilityInfo == null)
+                abilityInfo = (Ability_SO)Resources.Load("ScriptableObjects/Abilities/" + AbilityInfoName);
+
+            return abilityInfo;
+        }
+    }
+    protected abstract string AbilityInfoName { get; }
 
     protected float nextUse;
 
@@ -15,7 +24,7 @@ public abstract class Ability
         if (Time.time >= nextUse)
         {
             Use(player);
-            nextUse = Time.time + cooldown;
+            nextUse = Time.time + AbilityInfo.cooldown;
         }
     }
 
