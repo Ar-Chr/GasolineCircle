@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68d4a8aea9b62a149a19d891bb53c958, type: 3}
-  m_Name: DropSpikesInfo
+  m_Name: DropSpilledOilInfo
   m_EditorClassIdentifier: 
-  name: "\u041A\u043E\u043B\u044E\u0447\u0430\u044F \u043F\u0440\u043E\u0432\u043E\u043B\u043E\u043A\u0430"
-  abilitySprite: {fileID: 21300000, guid: 17b9c4d44e3c6de4e8ad228faf3e7ea1, type: 3}
+  name: "\u0420\u0430\u0437\u043B\u0438\u0442\u043E\u0435 \u043C\u0430\u0441\u043B\u043E"
+  abilitySprite: {fileID: 21300000, guid: 93ba7101b30530a4fb38fe54ac59b3c0, type: 3}
   cooldown: 4
