@@ -1043,7 +1043,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 85d6beac211d8c24b8113059d5e6b884, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 83fab4e1d3aa8a24ab1bb4e57445e0c5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1960,7 +1960,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 93ba7101b30530a4fb38fe54ac59b3c0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d45302d6be667154abb9b27497622095, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3014,8 +3014,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -6.5, y: -480}
-  m_SizeDelta: {x: 420, y: 180}
+  m_AnchoredPosition: {x: -5, y: -480}
+  m_SizeDelta: {x: 415, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &455225765
 MonoBehaviour:
@@ -3456,7 +3456,7 @@ GameObject:
   m_Component:
   - component: {fileID: 563579731}
   m_Layer: 5
-  m_Name: MaxSpeed (new)
+  m_Name: MaxSpeed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3672,7 +3672,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u041C\u0430\u0441\u043B\u044F\u043D\u043D\u0430\u044F \u043B\u0443\u0436\u0430"
+  m_Text: "\u041A\u0443\u0447\u0430 \u0445\u043B\u0430\u043C\u0430"
 --- !u!222 &592488536
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3840,8 +3840,10 @@ MonoBehaviour:
   backButton: {fileID: 608931668}
   nextButton: {fileID: 14383458}
   mapsForChoice:
-  - {fileID: 11400000, guid: 2ac3d6b7d9132654fbbf1a02afea555a, type: 2}
   - {fileID: 11400000, guid: 39a45b23faf5c7a42b0e658c5267d93f, type: 2}
+  - {fileID: 11400000, guid: 2ac3d6b7d9132654fbbf1a02afea555a, type: 2}
+  - {fileID: 11400000, guid: bcf9093d59aeb3748946941c1193849a, type: 2}
+  - {fileID: 11400000, guid: 4f7dacd47968cfe4daa274a842cefa65, type: 2}
 --- !u!114 &609694753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7352,7 +7354,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u041F\u0438\u043A\u0430\u043F"
+  m_Text: "\u0421\u0442\u0440\u0430\u043D\u043D\u0438\u043A"
 --- !u!222 &1190016646
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8345,7 +8347,7 @@ MonoBehaviour:
     topSpeedText: {fileID: 1745763511}
     abilityName: {fileID: 1514853178}
     abilityIcon: {fileID: 196983228}
-    carSelectMenu: {fileID: 0}
+    carSelectMenu: {fileID: 1342505933}
   player1:
     playerNameInput: {fileID: 1923215245}
     leftArrow: {fileID: 825482097}
@@ -8359,7 +8361,7 @@ MonoBehaviour:
     topSpeedText: {fileID: 1596402908}
     abilityName: {fileID: 592488535}
     abilityIcon: {fileID: 280378627}
-    carSelectMenu: {fileID: 0}
+    carSelectMenu: {fileID: 1342505933}
 --- !u!1 &1379405591
 GameObject:
   m_ObjectHideFlags: 0
@@ -11010,7 +11012,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 8.500077, y: -34.99999}
+  m_AnchoredPosition: {x: 0, y: -30}
   m_SizeDelta: {x: 300, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1820225517
@@ -11045,7 +11047,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u041F\u0438\u043A\u0430\u043F"
+  m_Text: "\u0421\u0442\u0440\u0430\u043D\u043D\u0438\u043A"
 --- !u!222 &1820225518
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11288,7 +11290,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 85d6beac211d8c24b8113059d5e6b884, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 83fab4e1d3aa8a24ab1bb4e57445e0c5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11479,8 +11481,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -6.5, y: -480}
-  m_SizeDelta: {x: 420, y: 180}
+  m_AnchoredPosition: {x: -5, y: -480}
+  m_SizeDelta: {x: 415, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1931004671
 MonoBehaviour:

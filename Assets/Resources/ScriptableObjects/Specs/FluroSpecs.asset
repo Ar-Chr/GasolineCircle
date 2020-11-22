@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0726d6589db10624698b4b34dd4c54a1, type: 3}
-  m_Name: BuggySpecs
+  m_Name: FluroSpecs
   m_EditorClassIdentifier: 
   acceleration: 5
-  topSpeed: 35
-  reverseTopSpeed: 25
-  brakesDrag: 4
-  sideDrag: 3
-  brakesSideDrag: 2
-  rotationSpeed: 100
-  brakesRotationSpeed: 120
-  durability: 140
-  fuel: 80
-  fuelRate: 1.6
+  topSpeed: 30
+  reverseTopSpeed: 20
+  brakesDrag: 3
+  sideDrag: 2.5
+  brakesSideDrag: 1.5
+  rotationSpeed: 70
+  brakesRotationSpeed: 150
+  durability: 220
+  fuel: 120
+  fuelRate: 2.4

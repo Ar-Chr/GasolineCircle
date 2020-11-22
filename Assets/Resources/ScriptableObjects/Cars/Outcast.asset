@@ -21,10 +21,11 @@ MonoBehaviour:
     \u0437\u0430\u0447\u0435\u043C \u043E\u043D \u0441\u044E\u0434\u0430 \u043F\u0440\u0438\u0435\u0445\u0430\u043B,
     \u043D\u043E \u043D\u0430\u0441\u0442\u0440\u043E\u0439 \u0443 \u043D\u0435\u0433\u043E
     \u0431\u043E\u0435\u0432\u043E\u0439."
-  sprite: {fileID: 0}
-  planePrefab: {fileID: 0}
+  sprite: {fileID: 21300000, guid: d2eb06ea6743c8b4fb702d5e49116f6c, type: 3}
+  planePrefab: {fileID: 571166129298583303, guid: 12815bbf455667c4b929918399f6bc5e,
+    type: 3}
   specs: {fileID: 11400000, guid: eedb469a180ce21469ab9b07cb21fa9a, type: 2}
-  abilityClassName: DropScrapPile
+  abilityClassName: Boost
   objectSpawnPosition: {x: 0, y: -0.1, z: -3}
   capsuleColliderRadius: 0
   capsuleColliderLength: 0
