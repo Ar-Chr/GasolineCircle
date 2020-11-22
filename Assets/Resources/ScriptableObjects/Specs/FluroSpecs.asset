@@ -20,6 +20,6 @@ MonoBehaviour:
   brakesSideDrag: 1.5
   rotationSpeed: 70
   brakesRotationSpeed: 150
-  durability: 220
+  durability: 240
   fuel: 120
   fuelRate: 2.4

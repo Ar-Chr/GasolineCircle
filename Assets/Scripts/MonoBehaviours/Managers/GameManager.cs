@@ -67,7 +67,7 @@ public class GameManager : Singleton<GameManager>
         AsyncOperation levelLoad = SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Additive);
         if(levelLoad == null)
         {
-            Debug.LogError("[GameManager] Unable to load level");
+            Debug.LogError($"[GameManager] Unable to load level \"{levelName}\"");
             return;
         }
 
@@ -78,6 +78,9 @@ public class GameManager : Singleton<GameManager>
     private void OnLoadOperationComplete(AsyncOperation levelLoad)
     {
         players = FindObjectsOfType<Player>();
+        if (players == null || players.Length != 2)
+            throw new System.Exception("[GameManager] Found number of players other than 2");
+            
         lapInfoManager = new LapInfoManager(players);
         players[0].Initialize(name0, car0);
         players[1].Initialize(name1, car1);

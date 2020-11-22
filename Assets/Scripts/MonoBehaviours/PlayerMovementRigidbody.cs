@@ -9,11 +9,11 @@ public class PlayerMovementRigidbody : MonoBehaviour
     private ControlsSet_SO controls;
 
     [HideInInspector] public float acceleration;
-    private float topSpeed;
+    [HideInInspector] public float topSpeed;
     [HideInInspector] public float reverseAcceleration;
 
-    private float airDrag;
-    private float rollingDrag;
+    [HideInInspector] public float airDrag;
+    [HideInInspector] public float rollingDrag;
     [HideInInspector] public float brakesDrag;
     [HideInInspector] public float sideDrag;
     [HideInInspector] public float brakesSideDrag;
@@ -22,6 +22,10 @@ public class PlayerMovementRigidbody : MonoBehaviour
     [HideInInspector] public float brakesRotationSpeed;
 
     private new Rigidbody rigidbody;
+
+    public Player player;
+
+    private float groundSpeedModifier = 0.6f;
 
     public void SetSpecs(CarSpecs_SO specs)
     {
@@ -50,6 +54,9 @@ public class PlayerMovementRigidbody : MonoBehaviour
     private void FixedUpdate()
     {
         float wheelDrag = rollingDrag;
+        if (player != null && player.IsOnGround)
+            wheelDrag = acceleration / (groundSpeedModifier * topSpeed) - airDrag * groundSpeedModifier * topSpeed;
+
         float sideDrag = this.sideDrag;
         float rotSpeed = rotationSpeed;
 
@@ -81,7 +88,7 @@ public class PlayerMovementRigidbody : MonoBehaviour
     private bool HoldingRight => Holding(controls.rightButton);
     private bool HoldingBackward => Holding(controls.backwardButton);
 
-    private void Accelerate(float time, Vector3 acceleration)
+    public void Accelerate(float time, Vector3 acceleration)
     {
         rigidbody.AddRelativeForce(acceleration * time, ForceMode.VelocityChange);
     }

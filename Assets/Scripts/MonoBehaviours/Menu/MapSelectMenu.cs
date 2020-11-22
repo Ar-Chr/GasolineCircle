@@ -24,9 +24,16 @@ public class MapSelectMenu : MonoBehaviour
     {
         leftArrow.onClick.AddListener(PreviousMap);
         rightArrow.onClick.AddListener(NextMap);
-        nextButton.onClick.AddListener(() => 
-            GameManager.Instance.OnMapSelected.Invoke(CurrentMap.sceneName));
+        nextButton.onClick.AddListener(() =>
+        {
+
+            string sceneName = CurrentMap.sceneName == "Random" ?
+                mapsForChoice[Random.Range(0, mapsForChoice.Length)].sceneName :
+                CurrentMap.sceneName;
+            GameManager.Instance.OnMapSelected.Invoke(sceneName);
+        });
     }
+    
 
     private void OnEnable()
     {

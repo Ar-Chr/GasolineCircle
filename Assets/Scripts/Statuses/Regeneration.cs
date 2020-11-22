@@ -7,6 +7,7 @@ public class Regeneration : Status
     private float durabilityPerSecond;
     private float fuelPerSecond;
 
+    public Regeneration() : this(Time.fixedDeltaTime, 30 / Time.fixedDeltaTime, 15 / Time.fixedDeltaTime) { }
     public Regeneration(float duration, float durabilityPerSecond, float fuelPerSecond) : base(duration)
     {
         this.durabilityPerSecond = durabilityPerSecond;

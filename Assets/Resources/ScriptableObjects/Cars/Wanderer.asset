@@ -24,6 +24,6 @@ MonoBehaviour:
     type: 3}
   specs: {fileID: 11400000, guid: e4407a78fae3d0343a5ec5ed728a09fb, type: 2}
   abilityClassName: DropOil
-  objectSpawnPosition: {x: 0, y: -0.1, z: -3}
-  capsuleColliderRadius: 0
-  capsuleColliderLength: 0
+  objectSpawnPosition: {x: 0, y: 0, z: -2.55}
+  capsuleColliderRadius: 0.75
+  capsuleColliderLength: 3.85

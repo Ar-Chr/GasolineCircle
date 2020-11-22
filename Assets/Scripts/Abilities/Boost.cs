@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Boost : Ability
 {
-    protected override string AbilityInfoName => throw new System.NotImplementedException();
+    protected override string AbilityInfoName => "BoostInfo";
 
     protected override void Use(Player player)
     {
-        throw new System.NotImplementedException();
+        player.AddEffect(new ContinuousAcceleration(10, 4));
     }
 }

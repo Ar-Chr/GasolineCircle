@@ -28,6 +28,6 @@ MonoBehaviour:
     type: 3}
   specs: {fileID: 11400000, guid: 39abe8d88df246d4faf8d579dd379f28, type: 2}
   abilityClassName: Regenerate
-  objectSpawnPosition: {x: 0, y: -0.1, z: -2.75}
+  objectSpawnPosition: {x: 0, y: 0, z: -2.75}
   capsuleColliderRadius: 0.85
   capsuleColliderLength: 4.15

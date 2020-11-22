@@ -19,6 +19,9 @@ public class Player : MonoBehaviour
     private List<Status> statuses;
     public CarStats carStats;
 
+    private int groundCollidersTouching;
+    public bool IsOnGround => groundCollidersTouching > 0;
+
     public void Initialize(string name, Car_SO car)
     {
         this.name = name;
@@ -41,8 +44,11 @@ public class Player : MonoBehaviour
                                 car.specs.fuelRate,
                                 this);
 
+        movementScript.player = this;
         movementScript.SetSpecs(car.specs);
         movementScript.SetControls(controls);
+
+        groundCollidersTouching = 0;
     }
 
     private void Start()
@@ -52,10 +58,22 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        HandlePlayerMoving();
+        RemoveExpiredStatuses();
+    }
+
+    private void HandlePlayerMoving()
+    {
         if ((Input.GetKey(controls.forwardButton) || Input.GetKey(controls.backwardButton)) && movementScript.acceleration > 0.1f)
         {
-            carStats.BurnFuel(Time.fixedDeltaTime);
+            carStats.BurnFuel(Time.fixedDeltaTime * (IsOnGround ? 2 : 1));
+            if (IsOnGround)
+                carStats.TakeDamage(4f * Time.deltaTime);
         }
+    }
+
+    private void RemoveExpiredStatuses()
+    {
         for (int i = 0; i < statuses.Count; i++)
         {
             Status status = statuses[i];
@@ -93,5 +111,17 @@ public class Player : MonoBehaviour
         {
             carStats.TakeDamage(relativeVelocity * 0.8f);
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Ground")
+            groundCollidersTouching++;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Ground")
+            groundCollidersTouching--;
     }
 }

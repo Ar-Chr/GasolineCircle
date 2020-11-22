@@ -25,6 +25,6 @@ MonoBehaviour:
     type: 3}
   specs: {fileID: 11400000, guid: 60cc0475a9f0002409fb4e0d99d003c6, type: 2}
   abilityClassName: DropSpikes
-  objectSpawnPosition: {x: 0, y: -0.1, z: -3}
-  capsuleColliderRadius: 0
-  capsuleColliderLength: 0
+  objectSpawnPosition: {x: 0, y: 0, z: -2.55}
+  capsuleColliderRadius: 0.75
+  capsuleColliderLength: 3.85

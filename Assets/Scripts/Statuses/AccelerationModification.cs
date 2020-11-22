@@ -6,6 +6,7 @@ public class AccelerationModification : Status
 {
     private float accelerationModifier;
 
+    public AccelerationModification() : this(4f, 1.5f) { }
     public AccelerationModification(float duration, float accelerationModifier) : base(duration)
     {
         this.accelerationModifier = accelerationModifier;
@@ -22,9 +23,8 @@ public class AccelerationModification : Status
     {
         CarSpecs_SO specs = player.car.specs;
 
-        float airDrag = specs.acceleration / (specs.topSpeed * specs.topSpeed + 30 * specs.topSpeed);
-        float rollingDrag = 30 * airDrag;
-        player.movementScript.reverseAcceleration = airDrag * (specs.reverseTopSpeed * specs.reverseTopSpeed + 30 * specs.reverseTopSpeed);
+        player.movementScript.reverseAcceleration = 
+            player.movementScript.airDrag * (specs.reverseTopSpeed * specs.reverseTopSpeed + 30 * specs.reverseTopSpeed);
 
         player.movementScript.acceleration = specs.acceleration;
     }

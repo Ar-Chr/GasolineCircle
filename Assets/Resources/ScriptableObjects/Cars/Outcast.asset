@@ -26,6 +26,6 @@ MonoBehaviour:
     type: 3}
   specs: {fileID: 11400000, guid: eedb469a180ce21469ab9b07cb21fa9a, type: 2}
   abilityClassName: Boost
-  objectSpawnPosition: {x: 0, y: -0.1, z: -3}
-  capsuleColliderRadius: 0
-  capsuleColliderLength: 0
+  objectSpawnPosition: {x: 0, y: 0, z: -2.35}
+  capsuleColliderRadius: 1
+  capsuleColliderLength: 3.4
