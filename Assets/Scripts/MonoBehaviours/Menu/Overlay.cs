@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class Overlay : MonoBehaviour
 {
-    [SerializeField] PlayerUIElements[] uiElements;
+    [SerializeField] private PlayerUIElements player0UiElements;
+    [SerializeField] private PlayerUIElements player1UiElements;
     private Dictionary<Player, PlayerUIElements> playerInfos =
         new Dictionary<Player, PlayerUIElements>();
 
@@ -17,25 +18,42 @@ public class Overlay : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.OnPlayerPassedFinish.AddListener(HandlePlayerPassedFinish);
+        UIManager.Instance.OnDurabilityChanged.AddListener(HandleDurabilityChanged);
+        UIManager.Instance.OnFuelChanged.AddListener(HandleFuelChanged);
     }
 
     public void Initialize()
     {
         playerInfos = new Dictionary<Player, PlayerUIElements>();
-        foreach (var e in uiElements)
-            playerInfos.Add(GameManager.Instance.players[e.player], e);
+        playerInfos.Add(GameManager.Instance.players[0], player0UiElements);
+        playerInfos.Add(GameManager.Instance.players[1], player1UiElements);
+
+        player0UiElements.playerName.text = GameManager.Instance.players[0].name;
+        player1UiElements.playerName.text = GameManager.Instance.players[1].name;
 
         foreach (var uiElements in playerInfos.Values)
         {
             uiElements.laps.text = $"{lapsPrefix}0";
             uiElements.bestTime.text = $"{bestTimePrefix}-";
             uiElements.previousTime.text = $"{previousTimePrefix}-";
+            uiElements.durabilityBar.value = 1;
+            uiElements.fuelBar.value = 1;
         }
     }
 
     private void HandlePlayerPassedFinish(Player player)
     {
         StartCoroutine(CallUpdateNextFrame(player));
+    }
+
+    public void HandleDurabilityChanged(Player player, float newRatio)
+    {
+        playerInfos[player].durabilityBar.value = newRatio;
+    }
+
+    public void HandleFuelChanged(Player player, float newRatio)
+    {
+        playerInfos[player].fuelBar.value = newRatio;
     }
 
     private IEnumerator CallUpdateNextFrame(Player player)
@@ -57,10 +75,13 @@ public class Overlay : MonoBehaviour
     [Serializable]
     private class PlayerUIElements
     {
-        public int player;
+        public Text playerName;
 
         public Text laps;
         public Text bestTime;
         public Text previousTime;
+
+        public Slider durabilityBar;
+        public Slider fuelBar;
     }
 }

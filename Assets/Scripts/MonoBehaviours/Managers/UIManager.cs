@@ -17,11 +17,14 @@ public class UIManager : Singleton<UIManager>
     [Space]
     [SerializeField] private Camera dummyCamera;
 
+    public Events.EventDurabilityChanged OnDurabilityChanged;
+    public Events.EventFuelChanged OnFuelChanged;
+
     private void Start()
     {
         SwitchMenusWithButton(mainMenu.playButton, mainMenu, mapSelectMenu);
         SwitchMenusWithButton(mapSelectMenu.backButton, mapSelectMenu, mainMenu);
-        SwitchMenusWithButton(mapSelectMenu.nextButton, mapSelectMenu,carSelectMenu);
+        SwitchMenusWithButton(mapSelectMenu.nextButton, mapSelectMenu, carSelectMenu);
         SwitchMenusWithButton(carSelectMenu.backButton, carSelectMenu, mapSelectMenu);
 
         carSelectMenu.playButton.onClick.AddListener(() =>

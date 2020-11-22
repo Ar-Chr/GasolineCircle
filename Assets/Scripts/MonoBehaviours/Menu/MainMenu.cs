@@ -7,7 +7,10 @@ using UnityEngine.Events;
 public class MainMenu : MonoBehaviour
 {
     public Button playButton;
+    public Button settingsButton;
+    public Button leaderboardButton;
     public Button quitButton;
+    public Button loreButton;
 
     private void Start()
     {

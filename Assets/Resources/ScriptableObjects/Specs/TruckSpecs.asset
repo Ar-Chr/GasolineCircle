@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0726d6589db10624698b4b34dd4c54a1, type: 3}
-  m_Name: AmbulanceSpecs
+  m_Name: TruckSpecs
   m_EditorClassIdentifier: 
-  acceleration: 5
-  topSpeed: 30
-  reverseTopSpeed: 20
+  acceleration: 6
+  topSpeed: 35
+  reverseTopSpeed: 15
   brakesDrag: 3
   sideDrag: 2.5
   brakesSideDrag: 1.5
   rotationSpeed: 70
   brakesRotationSpeed: 150
-  durability: 220
-  fuel: 120
-  fuelRate: 2.4
+  durability: 180
+  fuel: 100
+  fuelRate: 2

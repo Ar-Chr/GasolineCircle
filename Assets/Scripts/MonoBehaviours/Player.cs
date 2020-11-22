@@ -38,7 +38,8 @@ public class Player : MonoBehaviour
 
         carStats = new CarStats(car.specs.durability,
                                 car.specs.fuel,
-                                car.specs.fuelRate);
+                                car.specs.fuelRate,
+                                this);
 
         movementScript.SetSpecs(car.specs);
         movementScript.SetControls(controls);
@@ -51,7 +52,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Input.GetKey(controls.forwardButton) || Input.GetKey(controls.backwardButton))
+        if ((Input.GetKey(controls.forwardButton) || Input.GetKey(controls.backwardButton)) && movementScript.acceleration > 0.1f)
         {
             carStats.BurnFuel(Time.fixedDeltaTime);
         }
@@ -90,9 +91,7 @@ public class Player : MonoBehaviour
         float relativeVelocity = collision.relativeVelocity.magnitude;
         if (relativeVelocity > damageThreshold)
         {
-            carStats.TakeDamage(relativeVelocity * 0.3f);
-            Debug.Log($"Relative velocity = {relativeVelocity: 0.0}\n {relativeVelocity * 0.3f: 0.0} damage taken");
+            carStats.TakeDamage(relativeVelocity * 0.8f);
         }
-        // Take damage = collision.relativeVelocity * 0.3;
     }
 }

@@ -13,8 +13,8 @@ public abstract class ObstacleSpawnAbility : Ability
             obstacle = (GameObject)Resources.Load("Prefabs/Obstacles/" + ObstacleName);
 
         Object.Instantiate(
-            obstacle, 
-            player.transform.position + player.transform.TransformDirection(player.car.objectSpawnPosition), 
-            Quaternion.identity);
+            obstacle,
+            player.transform.position + player.transform.TransformDirection(player.car.objectSpawnPosition),
+            Quaternion.LookRotation(player.transform.TransformDirection(Vector3.forward), Vector3.up));
     }
 }
