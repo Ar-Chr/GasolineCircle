@@ -308,7 +308,7 @@ GameObject:
   - component: {fileID: 278568440}
   - component: {fileID: 278568439}
   m_Layer: 0
-  m_Name: TrackObjectForPlayer0
+  m_Name: CheckpointsForPlayer0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1874,7 +1874,7 @@ GameObject:
   - component: {fileID: 1407827533}
   - component: {fileID: 1407827532}
   m_Layer: 0
-  m_Name: TrackObjectForPlayer1
+  m_Name: CheckpointsForPlayer1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
