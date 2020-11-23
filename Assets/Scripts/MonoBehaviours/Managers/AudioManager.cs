@@ -14,6 +14,7 @@ public class AudioManager : Singleton<AudioManager>
         sound.source.pitch = sound.pitch;
 
         sound.source.Play();
-        Destroy(sound.source, sound.clip.length);
+        if (!sound.loop)
+            Destroy(sound.source, sound.clip.length);
     }
 }

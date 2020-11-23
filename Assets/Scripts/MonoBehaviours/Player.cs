@@ -1,10 +1,8 @@
-﻿using System;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
 public class Player : MonoBehaviour
 {
     public new string name;
@@ -16,12 +14,14 @@ public class Player : MonoBehaviour
     [SerializeField] private float damageThreshold;
     [Space]
     [SerializeField] private Sound driveSound;
+    [SerializeField] private Sound bumpSound;
+    [SerializeField] public Sound breakSound;
 
     [HideInInspector] public Car_SO car;
 
     private List<Status> statuses;
 
-    public CarStats carStats;
+    [HideInInspector] public CarStats carStats;
 
     private int groundCollidersTouching;
     public bool IsOnGround => groundCollidersTouching > 0;
@@ -53,6 +53,8 @@ public class Player : MonoBehaviour
         movementScript.SetControls(controls);
 
         groundCollidersTouching = 0;
+
+        AudioManager.Instance.Play(driveSound);
     }
 
     private void Start()
@@ -73,7 +75,18 @@ public class Player : MonoBehaviour
             carStats.BurnFuel(Time.fixedDeltaTime * (IsOnGround ? 2 : 1));
             if (IsOnGround)
                 carStats.TakeDamage(4f * Time.deltaTime);
+
+            driveSound.source.volume += 0.6f * Time.fixedDeltaTime;
+            driveSound.source.pitch += 0.4f * Time.fixedDeltaTime;
         }
+        else
+        {
+            driveSound.source.volume -= 0.6f * Time.fixedDeltaTime;
+            driveSound.source.pitch -= 0.4f * Time.fixedDeltaTime;
+        }
+        driveSound.source.volume = Mathf.Clamp(driveSound.source.volume, 0.2f, 0.8f);
+        float maxPitch = 1f + Mathf.Abs(movementScript.ForwardVelocity) / movementScript.topSpeed;
+        driveSound.source.pitch = Mathf.Clamp(driveSound.source.pitch, 1f, maxPitch);
     }
 
     private void RemoveExpiredStatuses()
@@ -113,6 +126,10 @@ public class Player : MonoBehaviour
         float relativeVelocity = collision.relativeVelocity.magnitude;
         if (relativeVelocity > damageThreshold)
         {
+            AudioManager.Instance.Play(bumpSound);
+            bumpSound.source.pitch = Random.Range(0.5f, 1.4f);
+            bumpSound.source.volume = Mathf.Lerp(0.4f, 0.8f, (relativeVelocity - damageThreshold) / 16f);
+
             carStats.TakeDamage(relativeVelocity * 0.8f);
         }
     }

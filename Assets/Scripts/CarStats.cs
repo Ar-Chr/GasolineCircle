@@ -8,8 +8,8 @@ public class CarStats
     private float maxDurability;
     private float maxFuel;
 
-    [SerializeField] private float durability;
-    [SerializeField] private float fuel;
+    private float durability;
+    private float fuel;
     private float fuelRate;
 
     private float repairDuration = 16;
@@ -30,6 +30,7 @@ public class CarStats
         fuel = fuel < 0 ? 0 : fuel;
         if (fuel < 0.05)
         {
+            AudioManager.Instance.Play(player.breakSound);
             player.AddEffect(new AccelerationModification(repairDuration, 0));
             player.AddEffect(new Refueling(repairDuration, maxFuel / repairDuration));
         }
@@ -49,6 +50,7 @@ public class CarStats
         durability = Mathf.Clamp(durability, 0, durability);
         if (durability < 0.05)
         {
+            AudioManager.Instance.Play(player.breakSound);
             player.AddEffect(new AccelerationModification(repairDuration, 0));
             player.AddEffect(new Regeneration(repairDuration, maxDurability / repairDuration));
         }
