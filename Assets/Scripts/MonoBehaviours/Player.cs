@@ -2,12 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Player : MonoBehaviour
 {
     public new string name;
-    [Space]
-    [SerializeField] private Ability ability;
     [Space]
     public PlayerMovementRigidbody movementScript;
     [SerializeField] private ControlsSet_SO controls;
@@ -18,6 +17,21 @@ public class Player : MonoBehaviour
     [SerializeField] public Sound breakSound;
 
     [HideInInspector] public Car_SO car;
+
+    private Ability ability;
+    public Ability Ability
+    {
+        get
+        {
+            if (ability == null)
+            {
+                Type abilityType = Type.GetType(car.abilityClassName);
+                ability = (Ability)abilityType.GetConstructor(new Type[0]).Invoke(new object[0]);
+            }
+
+            return ability;
+        }
+    }
 
     private List<Status> statuses;
 
@@ -30,7 +44,6 @@ public class Player : MonoBehaviour
     {
         this.name = name;
         this.car = car;
-        ability = car.Ability;
 
         for (int i = 0; i < transform.childCount; i++)
         {
@@ -60,6 +73,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         statuses = new List<Status>();
+        GameManager.Instance.OnPlayerWon.AddListener(HandlePlayerWon);
     }
 
     private void FixedUpdate()
@@ -89,6 +103,12 @@ public class Player : MonoBehaviour
         driveSound.source.pitch = Mathf.Clamp(driveSound.source.pitch, 1f, maxPitch);
     }
 
+    private void HandlePlayerWon(Player arg0)
+    {
+        movementScript.acceleration = 0;
+        movementScript.reverseAcceleration = 0;
+    }
+
     private void RemoveExpiredStatuses()
     {
         for (int i = 0; i < statuses.Count; i++)
@@ -106,7 +126,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(controls.abilityButton))
-            ability.TryUse(this);
+            Ability.TryUse(this);
     }
 
     public void AddEffect(Status status)
@@ -127,7 +147,7 @@ public class Player : MonoBehaviour
         if (relativeVelocity > damageThreshold)
         {
             AudioManager.Instance.Play(bumpSound);
-            bumpSound.source.pitch = Random.Range(0.5f, 1.4f);
+            bumpSound.source.pitch = UnityEngine.Random.Range(0.5f, 1.4f);
             bumpSound.source.volume = Mathf.Lerp(0.4f, 0.8f, (relativeVelocity - damageThreshold) / 16f);
 
             carStats.TakeDamage(relativeVelocity * 0.8f);

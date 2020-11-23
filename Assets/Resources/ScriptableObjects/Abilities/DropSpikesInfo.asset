@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: "\u041A\u043E\u043B\u044E\u0447\u0430\u044F \u043F\u0440\u043E\u0432\u043E\u043B\u043E\u043A\u0430"
   abilitySprite: {fileID: 21300000, guid: 17b9c4d44e3c6de4e8ad228faf3e7ea1, type: 3}
-  cooldown: 4
+  cooldown: 12

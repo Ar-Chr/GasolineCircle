@@ -12,7 +12,7 @@ public class CarStats
     private float fuel;
     private float fuelRate;
 
-    private float repairDuration = 16;
+    private float repairDuration = 10;
 
     private Player player;
 
@@ -33,6 +33,7 @@ public class CarStats
             AudioManager.Instance.Play(player.breakSound);
             player.AddEffect(new AccelerationModification(repairDuration, 0));
             player.AddEffect(new Refueling(repairDuration, maxFuel / repairDuration));
+            GameManager.Instance.OnCarBroke.Invoke(repairDuration, player);
         }
         FuelChanged();
     }
@@ -53,6 +54,7 @@ public class CarStats
             AudioManager.Instance.Play(player.breakSound);
             player.AddEffect(new AccelerationModification(repairDuration, 0));
             player.AddEffect(new Regeneration(repairDuration, maxDurability / repairDuration));
+            GameManager.Instance.OnCarBroke.Invoke(repairDuration, player);
         }
         DurabilityChanged();
     }

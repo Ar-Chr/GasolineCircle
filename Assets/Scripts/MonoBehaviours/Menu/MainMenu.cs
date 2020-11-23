@@ -15,5 +15,6 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         quitButton.onClick.AddListener(GameManager.Instance.QuitGame);
+        leaderboardButton.onClick.AddListener(() => UIManager.Instance.SpawnComingSoon(leaderboardButton.transform.position, transform));
     }
 }

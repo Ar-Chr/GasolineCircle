@@ -20,7 +20,6 @@ public class Car_SO : ScriptableObject
     public float capsuleColliderLength;
 
     private Ability ability;
-    [HideInInspector]
     public Ability Ability
     {
         get
@@ -34,5 +33,4 @@ public class Car_SO : ScriptableObject
             return ability;
         }
     }
-        
 }

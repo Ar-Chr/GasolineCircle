@@ -14,8 +14,11 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private PauseMenu pauseMenu;
     [Space]
     [SerializeField] private Overlay overlay;
+    [SerializeField] private VictoryScreen victoryScreen;
     [Space]
     [SerializeField] private Camera dummyCamera;
+    [Space]
+    [SerializeField] private GameObject comingSoon;
 
     [HideInInspector] public Events.EventDurabilityChanged OnDurabilityChanged;
     [HideInInspector] public Events.EventFuelChanged OnFuelChanged;
@@ -34,6 +37,7 @@ public class UIManager : Singleton<UIManager>
         });
 
         GameManager.Instance.OnGameStateChanged.AddListener(HandleGameStateChange);
+        GameManager.Instance.OnPlayerWon.AddListener(HandlePlayerWon);
     }
 
     private void SwitchMenusWithButton(Button button, MonoBehaviour from, MonoBehaviour to)
@@ -56,5 +60,17 @@ public class UIManager : Singleton<UIManager>
         }
 
         pauseMenu.gameObject.SetActive(currentState == GameManager.GameState.PAUSED);
+    }
+
+    private void HandlePlayerWon(Player player)
+    {
+        victoryScreen.gameObject.SetActive(true);
+        victoryScreen.ShowWinnerStats(player);
+    }
+
+    public void SpawnComingSoon(Vector3 position, Transform parent)
+    {
+        var cs =Instantiate(comingSoon, position, Quaternion.Euler(0, 0, UnityEngine.Random.Range(-45f, 45f)), parent);
+        Destroy(cs, 2f);
     }
 }

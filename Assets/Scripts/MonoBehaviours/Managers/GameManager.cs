@@ -16,6 +16,7 @@ public class GameManager : Singleton<GameManager>
     [HideInInspector] public Events.EventPlayerPassedFinish OnPlayerPassedFinish;
     [HideInInspector] public Events.EventNextLevelSelected OnMapSelected;
     [HideInInspector] public Events.EventPlayerWon OnPlayerWon;
+    [HideInInspector] public Events.EventCarBroke OnCarBroke;
 
     public GameState CurrentGameState { get; private set; } = GameState.PREGAME;
     private string nextLevelName = string.Empty;
@@ -27,8 +28,11 @@ public class GameManager : Singleton<GameManager>
     private Car_SO car0, car1;
     private string name0, name1;
 
+    public int laps;
+
     private void Start()
     {
+        laps = 10;
         DontDestroyOnLoad(gameObject);
         OnMapSelected.AddListener(HandleNextLevelSelected);
         OnPlayerPassedFinish.AddListener(HandlePlayerPassedFinish);
@@ -90,14 +94,18 @@ public class GameManager : Singleton<GameManager>
 
     private void HandlePlayerPassedFinish(Player player)
     {
-        if (lapInfoManager.Laps(player) == 10)
-            OnPlayerWon.Invoke(player);
+        StartCoroutine(WaitOneFrame(() =>
+        {
+            if (lapInfoManager.Laps(player) == laps)
+                OnPlayerWon.Invoke(player);
+        }));
     }
 
-    //private void HandlePlayerWon(Player player)
-    //{
-
-    //}
+    private IEnumerator WaitOneFrame(System.Action action)
+    {
+        yield return new WaitForSeconds(0);
+        action();
+    }
 
     #endregion
 
@@ -169,28 +177,32 @@ public class LapInfoManager
         lapInfos[player] = new PlayerLapInfo(oldInfo.laps + 1,
                                              Mathf.Min(oldInfo.bestTime, previousTime),
                                              previousTime,
-                                             Time.time);
+                                             Time.time,
+                                             oldInfo.totalTime + previousTime);
     }
 
     public int Laps(Player player) => lapInfos[player].laps;
     public float BestTime(Player player) => lapInfos[player].bestTime;
     public float PreviousTime(Player player) => lapInfos[player].previousTime;
+    public float TotalTime(Player player) => lapInfos[player].totalTime;
 
     private struct PlayerLapInfo
     {
         public int laps;
         public float bestTime;
         public float previousTime;
+        public float totalTime;
         private float lastFinishPassTime;
 
         public float CurrentLapTime => Time.time - lastFinishPassTime;
 
-        public PlayerLapInfo(int laps, float bestTime, float previousTime, float lastFinishPassTime)
+        public PlayerLapInfo(int laps, float bestTime, float previousTime, float lastFinishPassTime, float totalTime)
         {
             this.laps = laps;
             this.bestTime = bestTime;
             this.previousTime = previousTime;
             this.lastFinishPassTime = lastFinishPassTime;
+            this.totalTime = totalTime;
         }
     }
 }
