@@ -16,4 +16,4 @@ MonoBehaviour:
   leftButton: 97
   rightButton: 100
   backwardButton: 115
-  abilityButton: 304
+  abilityButton: 32
