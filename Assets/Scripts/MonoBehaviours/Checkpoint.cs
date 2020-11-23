@@ -14,7 +14,7 @@ public class Checkpoint : MonoBehaviour
 
         if (other.gameObject != track.PlayerThatNeedsToPass)
             return;
-        Debug.Log("Checkpoint passed by correct player");
+
         track.CheckpointPassed(id);
     }
 }

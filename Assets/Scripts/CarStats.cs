@@ -31,7 +31,7 @@ public class CarStats
         if (fuel < 0.05)
         {
             player.AddEffect(new AccelerationModification(repairDuration, 0));
-            player.AddEffect(new Regeneration(repairDuration, 0, maxFuel / repairDuration));
+            player.AddEffect(new Refueling(repairDuration, maxFuel / repairDuration));
         }
         FuelChanged();
     }
@@ -50,7 +50,7 @@ public class CarStats
         if (durability < 0.05)
         {
             player.AddEffect(new AccelerationModification(repairDuration, 0));
-            player.AddEffect(new Regeneration(repairDuration, maxDurability / repairDuration, 0));
+            player.AddEffect(new Regeneration(repairDuration, maxDurability / repairDuration));
         }
         DurabilityChanged();
     }
