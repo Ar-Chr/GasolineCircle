@@ -5,13 +5,11 @@ using UnityEngine;
 public class Regeneration : Status
 {
     private float durabilityPerSecond;
-    private float fuelPerSecond;
 
-    public Regeneration() : this(Time.fixedDeltaTime, 30 / Time.fixedDeltaTime, 15 / Time.fixedDeltaTime) { }
-    public Regeneration(float duration, float durabilityPerSecond, float fuelPerSecond) : base(duration)
+    public Regeneration() : this(Time.fixedDeltaTime, 30 / Time.fixedDeltaTime) { }
+    public Regeneration(float duration, float durabilityPerSecond) : base(duration)
     {
         this.durabilityPerSecond = durabilityPerSecond;
-        this.fuelPerSecond = fuelPerSecond;
     }
 
     public override void ApplyEffect(Player player)
@@ -27,11 +25,9 @@ public class Regeneration : Status
 
     private IEnumerator Regenerate(Player player)
     {
-        float deltaTime = Time.fixedDeltaTime;
-        while(Time.time < expireTime)
+        while (Time.time < expireTime)
         {
-            player.carStats.Repair(durabilityPerSecond * deltaTime);
-            player.carStats.Refuel(fuelPerSecond * deltaTime);
+            player.carStats.Repair(durabilityPerSecond * Time.fixedDeltaTime);
             yield return new WaitForFixedUpdate();
         }
     }

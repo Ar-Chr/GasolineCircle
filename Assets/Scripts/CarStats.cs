@@ -8,8 +8,8 @@ public class CarStats
     private float maxDurability;
     private float maxFuel;
 
-    private float durability;
-    private float fuel;
+    [SerializeField] private float durability;
+    [SerializeField] private float fuel;
     private float fuelRate;
 
     private float repairDuration = 16;

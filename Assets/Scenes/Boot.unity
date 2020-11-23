@@ -1183,7 +1183,7 @@ GameObject:
   - component: {fileID: 97670232}
   - component: {fileID: 97670231}
   m_Layer: 5
-  m_Name: WinScreen
+  m_Name: VictoryScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3947,7 +3947,7 @@ GameObject:
   - component: {fileID: 457645293}
   - component: {fileID: 457645292}
   m_Layer: 5
-  m_Name: WinScreenBackground
+  m_Name: VictoryScreenBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4639,7 +4639,7 @@ GameObject:
   - component: {fileID: 571783241}
   - component: {fileID: 571783240}
   m_Layer: 5
-  m_Name: WinScreenText
+  m_Name: VictoryScreenText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11791,7 +11791,7 @@ GameObject:
   - component: {fileID: 1438124206}
   - component: {fileID: 1438124205}
   m_Layer: 5
-  m_Name: WinScreenPanel
+  m_Name: VictoryScreenPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
