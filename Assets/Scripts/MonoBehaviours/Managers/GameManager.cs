@@ -12,10 +12,10 @@ public class GameManager : Singleton<GameManager>
         PAUSED
     }
 
-    public Events.EventGameState OnGameStateChanged;
-    public Events.EventPlayerPassedFinish OnPlayerPassedFinish;
-    public Events.EventNextLevelSelected OnMapSelected;
-    public Events.EventPlayerWon OnPlayerWon;
+    [HideInInspector] public Events.EventGameState OnGameStateChanged;
+    [HideInInspector] public Events.EventPlayerPassedFinish OnPlayerPassedFinish;
+    [HideInInspector] public Events.EventNextLevelSelected OnMapSelected;
+    [HideInInspector] public Events.EventPlayerWon OnPlayerWon;
 
     public GameState CurrentGameState { get; private set; } = GameState.PREGAME;
     private string nextLevelName = string.Empty;
@@ -23,7 +23,7 @@ public class GameManager : Singleton<GameManager>
 
     public LapInfoManager lapInfoManager;
 
-    public Player[] players;
+    [HideInInspector] public Player[] players;
     private Car_SO car0, car1;
     private string name0, name1;
 

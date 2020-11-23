@@ -6,7 +6,7 @@ public class Regeneration : Status
 {
     private float durabilityPerSecond;
 
-    public Regeneration() : this(0, 30 / Time.fixedDeltaTime) { }
+    public Regeneration() : this(-1, 30 / Time.fixedDeltaTime) { }
     public Regeneration(float duration, float durabilityPerSecond) : base(duration)
     {
         this.durabilityPerSecond = durabilityPerSecond;
@@ -14,7 +14,6 @@ public class Regeneration : Status
 
     public override void ApplyEffect(Player player)
     {
-        Debug.Log("[Regeneration] ApplyEffect");
         expireTime = Time.time + duration;
         player.StartCoroutine(Regenerate(player));
     }
@@ -28,7 +27,6 @@ public class Regeneration : Status
     {
         do
         {
-            Debug.Log("[Regeneration] Repair called");
             player.carStats.Repair(durabilityPerSecond * Time.fixedDeltaTime);
             yield return new WaitForFixedUpdate();
         } while (Time.time < expireTime);

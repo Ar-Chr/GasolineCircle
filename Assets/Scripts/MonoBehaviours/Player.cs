@@ -13,10 +13,14 @@ public class Player : MonoBehaviour
     [Space]
     public PlayerMovementRigidbody movementScript;
     [SerializeField] private ControlsSet_SO controls;
-    [HideInInspector] public Car_SO car;
     [SerializeField] private float damageThreshold;
+    [Space]
+    [SerializeField] private Sound driveSound;
+
+    [HideInInspector] public Car_SO car;
 
     private List<Status> statuses;
+
     public CarStats carStats;
 
     private int groundCollidersTouching;

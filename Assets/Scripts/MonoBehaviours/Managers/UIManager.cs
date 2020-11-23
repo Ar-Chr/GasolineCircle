@@ -17,8 +17,8 @@ public class UIManager : Singleton<UIManager>
     [Space]
     [SerializeField] private Camera dummyCamera;
 
-    public Events.EventDurabilityChanged OnDurabilityChanged;
-    public Events.EventFuelChanged OnFuelChanged;
+    [HideInInspector] public Events.EventDurabilityChanged OnDurabilityChanged;
+    [HideInInspector] public Events.EventFuelChanged OnFuelChanged;
 
     private void Start()
     {
