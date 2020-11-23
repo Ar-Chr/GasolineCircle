@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 6
   topSpeed: 35
-  reverseTopSpeed: 15
+  reverseTopSpeed: 35
   brakesDrag: 3
   sideDrag: 2.5
   brakesSideDrag: 1.5
