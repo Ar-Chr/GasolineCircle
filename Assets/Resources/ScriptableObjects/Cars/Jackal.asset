@@ -26,6 +26,6 @@ MonoBehaviour:
     type: 3}
   specs: {fileID: 11400000, guid: 4dcc96b26af53f44589a4515448f06af, type: 2}
   abilityClassName: DropScrapPile
-  objectSpawnPosition: {x: 0, y: 0, z: -2.55}
+  objectSpawnPosition: {x: 0, y: 0, z: -3}
   capsuleColliderRadius: 0.72
   capsuleColliderLength: 3.85

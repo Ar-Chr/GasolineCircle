@@ -6,7 +6,7 @@ public class Refueling : Status
 {
     private float fuelPerSecond;
 
-    public Refueling() : this(Time.fixedDeltaTime, 15 / Time.fixedDeltaTime) { }
+    public Refueling() : this(0, 15 / Time.fixedDeltaTime) { }
     public Refueling(float duration, float fuelPerSecond) : base(duration)
     {
         this.fuelPerSecond = fuelPerSecond;
@@ -14,6 +14,7 @@ public class Refueling : Status
 
     public override void ApplyEffect(Player player)
     {
+        Debug.Log("[Refueling] ApplyEffect");
         expireTime = Time.time + duration;
         player.StartCoroutine(Refuel(player));
     }
@@ -25,10 +26,11 @@ public class Refueling : Status
 
     private IEnumerator Refuel(Player player)
     {
-        while (Time.time < expireTime)
+        do
         {
+            Debug.Log("[Refueling] Refuel called");
             player.carStats.Refuel(fuelPerSecond * Time.fixedDeltaTime);
             yield return new WaitForFixedUpdate();
-        }
+        } while (Time.time < expireTime);
     }
 }
