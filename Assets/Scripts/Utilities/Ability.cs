@@ -19,6 +19,9 @@ public abstract class Ability
 
     protected float nextUse;
 
+    public float RemainingCooldown =>
+        Mathf.Clamp((nextUse - Time.time) / AbilityInfo.cooldown, 0f, 1f);
+
     public void TryUse(Player player)
     {
         if (Time.time >= nextUse)

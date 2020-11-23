@@ -205,11 +205,26 @@ MonoBehaviour:
   name: Player0
   movementScript: {fileID: 4876317034491025569}
   controls: {fileID: 11400000, guid: c40c504bde60553459710c1aadb7a9ce, type: 2}
-  car: {fileID: 0}
   damageThreshold: 4
-  carStats:
-    durability: 0
-    fuel: 0
+  driveSound:
+    clip: {fileID: 8300000, guid: 65ee2a2850b63b948acbd06496daeb37, type: 3}
+    loop: 1
+    volume: 0.2
+    pitch: 1
+    source: {fileID: 0}
+  bumpSound:
+    clip: {fileID: 8300000, guid: 79e32b2b85b45bc469fe031033710ffe, type: 3}
+    loop: 0
+    volume: 0.4
+    pitch: 1
+    source: {fileID: 0}
+  breakSound:
+    clip: {fileID: 8300000, guid: 2649bcf711b070140bbdecb787152e8c, type: 3}
+    loop: 0
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+  car: {fileID: 0}
 --- !u!1 &5538249816178415543
 GameObject:
   m_ObjectHideFlags: 0

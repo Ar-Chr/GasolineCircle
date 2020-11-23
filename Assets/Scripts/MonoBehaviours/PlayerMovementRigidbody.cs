@@ -23,9 +23,12 @@ public class PlayerMovementRigidbody : MonoBehaviour
 
     private new Rigidbody rigidbody;
 
-    public Player player;
+    [HideInInspector] public Player player;
 
     private float groundSpeedModifier = 0.6f;
+
+    public float ForwardVelocity =>
+        transform.InverseTransformDirection(rigidbody.velocity).z;
 
     public void SetSpecs(CarSpecs_SO specs)
     {

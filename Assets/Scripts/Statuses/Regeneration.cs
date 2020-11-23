@@ -6,7 +6,7 @@ public class Regeneration : Status
 {
     private float durabilityPerSecond;
 
-    public Regeneration() : this(Time.fixedDeltaTime, 30 / Time.fixedDeltaTime) { }
+    public Regeneration() : this(-1, 30 / Time.fixedDeltaTime) { }
     public Regeneration(float duration, float durabilityPerSecond) : base(duration)
     {
         this.durabilityPerSecond = durabilityPerSecond;
@@ -25,10 +25,10 @@ public class Regeneration : Status
 
     private IEnumerator Regenerate(Player player)
     {
-        while (Time.time < expireTime)
+        do
         {
             player.carStats.Repair(durabilityPerSecond * Time.fixedDeltaTime);
             yield return new WaitForFixedUpdate();
-        }
+        } while (Time.time < expireTime);
     }
 }

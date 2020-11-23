@@ -8,4 +8,5 @@ public class Events
     [System.Serializable] public class EventPlayerWon : UnityEvent<Player> { }
     [System.Serializable] public class EventFuelChanged : UnityEvent<Player, float> { }
     [System.Serializable] public class EventDurabilityChanged : UnityEvent<Player, float> { }
+    [System.Serializable] public class EventCarBroke : UnityEvent<float, Player> { }
 }
