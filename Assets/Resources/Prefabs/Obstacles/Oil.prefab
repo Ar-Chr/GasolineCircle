@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 378b5013b8c7141499b0155e6efba0ae, type: 2}
+  - {fileID: 2100000, guid: 66f8deee51c11f54890da88afe5eb5ea, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -107,4 +107,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destructionThreshold: 0
-  inflictedStatusClassName: DragLoss
+  inflictedStatuses:
+  - {fileID: 11400000, guid: 988badd835ecd2c4dae2c457cca964ca, type: 2}

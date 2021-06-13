@@ -1,23 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+[CreateAssetMenu(menuName = "Scriptable Objects/Statuses/Turnability Loss")]
 public class TurnabilityLoss : Status
 {
-    private float damage;
-
-    public TurnabilityLoss() : this(2f, 10f) { }
-    public TurnabilityLoss(float duration, float damage) : base(duration) 
-    {
-        this.damage = damage;
-    }
+    public TurnabilityLoss(float duration) : base(duration) { }
 
     public override void ApplyEffect(Player player)
     {
         expireTime = Time.time + duration;
         player.movementScript.rotationSpeed = 0;
         player.movementScript.brakesRotationSpeed = 0;
-        player.carStats.TakeDamage(damage);
     }
 
     public override void RemoveEffect(Player player)

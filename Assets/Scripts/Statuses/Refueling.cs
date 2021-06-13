@@ -1,12 +1,11 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Scriptable Objects/Statuses/Refueling")]
 public class Refueling : Status
 {
-    private float fuelPerSecond;
+    [SerializeField] private float fuelPerSecond;
 
-    public Refueling() : this(-1, 15 / Time.fixedDeltaTime) { }
     public Refueling(float duration, float fuelPerSecond) : base(duration)
     {
         this.fuelPerSecond = fuelPerSecond;

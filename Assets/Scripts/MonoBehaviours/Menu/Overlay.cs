@@ -25,8 +25,8 @@ public class Overlay : MonoBehaviour
 
     private void Update()
     {
-        player0UiElements.abilityIconDarkening.fillAmount = GameManager.Instance.players[0].Ability.RemainingCooldown;
-        player1UiElements.abilityIconDarkening.fillAmount = GameManager.Instance.players[1].Ability.RemainingCooldown;
+        player0UiElements.abilityIconDarkening.fillAmount = GameManager.Instance.players[0].car.ability.RemainingCooldown;
+        player1UiElements.abilityIconDarkening.fillAmount = GameManager.Instance.players[1].car.ability.RemainingCooldown;
     }
 
     private IEnumerator CountdownMending(float duration, Player player)
@@ -48,8 +48,8 @@ public class Overlay : MonoBehaviour
         player0UiElements.playerName.text = GameManager.Instance.players[0].name;
         player1UiElements.playerName.text = GameManager.Instance.players[1].name;
 
-        player0UiElements.abilityIcon.sprite = GameManager.Instance.players[0].Ability.AbilityInfo.abilitySprite;
-        player1UiElements.abilityIcon.sprite = GameManager.Instance.players[1].Ability.AbilityInfo.abilitySprite;
+        player0UiElements.abilityIcon.sprite = GameManager.Instance.players[0].car.ability.abilitySprite;
+        player1UiElements.abilityIcon.sprite = GameManager.Instance.players[1].car.ability.abilitySprite;
 
         foreach (var uiElements in playerInfos.Values)
         {

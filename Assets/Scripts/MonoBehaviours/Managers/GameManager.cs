@@ -12,23 +12,27 @@ public class GameManager : Singleton<GameManager>
         PAUSED
     }
 
+    #region Events
     [HideInInspector] public Events.EventGameState OnGameStateChanged;
     [HideInInspector] public Events.EventPlayerPassedFinish OnPlayerPassedFinish;
     [HideInInspector] public Events.EventNextLevelSelected OnMapSelected;
     [HideInInspector] public Events.EventPlayerWon OnPlayerWon;
     [HideInInspector] public Events.EventCarBroke OnCarBroke;
+    #endregion
 
+    #region Fields
     public GameState CurrentGameState { get; private set; } = GameState.PREGAME;
     private string nextLevelName = string.Empty;
     private string currentLevelName = string.Empty;
 
     public LapInfoManager lapInfoManager;
 
-    [HideInInspector] public Player[] players;
+    public Player[] players { get; private set; }
     private Car_SO car0, car1;
     private string name0, name1;
 
     public int laps;
+    #endregion 
 
     private void Start()
     {
@@ -64,8 +68,22 @@ public class GameManager : Singleton<GameManager>
         this.name1 = string.IsNullOrWhiteSpace(name1) ? "Игрок 2" : name1;
     }
 
-    #region Level load
+    private void HandlePlayerPassedFinish(Player player)
+    {
+        StartCoroutine(WaitOneFrame(() =>
+        {
+            if (lapInfoManager.Laps(player) == laps)
+                OnPlayerWon.Invoke(player);
+        }));
+    }
 
+    private IEnumerator WaitOneFrame(System.Action action)
+    {
+        yield return new WaitForSeconds(0);
+        action();
+    }
+
+    #region Level load
     private void LoadLevel(string levelName)
     {
         AsyncOperation levelLoad = SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Additive);
@@ -91,22 +109,6 @@ public class GameManager : Singleton<GameManager>
 
         ChangeGameStateTo(GameState.RUNNING);
     }
-
-    private void HandlePlayerPassedFinish(Player player)
-    {
-        StartCoroutine(WaitOneFrame(() =>
-        {
-            if (lapInfoManager.Laps(player) == laps)
-                OnPlayerWon.Invoke(player);
-        }));
-    }
-
-    private IEnumerator WaitOneFrame(System.Action action)
-    {
-        yield return new WaitForSeconds(0);
-        action();
-    }
-
     #endregion
 
     #region Level unload

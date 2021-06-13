@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public abstract class Status
+public abstract class Status : ScriptableObject
 {
-    public float expireTime;
-    protected float duration;
+    [SerializeField] protected float duration;
+
+    [HideInInspector] public float expireTime;
 
     public Status(float duration)
     {

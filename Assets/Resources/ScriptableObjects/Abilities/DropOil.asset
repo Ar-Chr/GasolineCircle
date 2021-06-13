@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68d4a8aea9b62a149a19d891bb53c958, type: 3}
-  m_Name: DropOilInfo
+  m_Script: {fileID: 11500000, guid: a9afe3f3331379f4da4791e103543a83, type: 3}
+  m_Name: DropOil
   m_EditorClassIdentifier: 
-  name: "\u041C\u0430\u0441\u043B\u044F\u043D\u043D\u0430\u044F \u043B\u0443\u0436\u0430"
+  name: "\u0420\u0430\u0437\u043B\u0438\u0442\u044C \u043C\u0430\u0441\u043B\u043E"
   abilitySprite: {fileID: 21300000, guid: 93ba7101b30530a4fb38fe54ac59b3c0, type: 3}
-  cooldown: 12
+  cooldown: 16
+  obstacle: {fileID: 2061577835948474538, guid: 24dd55bbd273c954db9b4ccf8f3151b9,
+    type: 3}

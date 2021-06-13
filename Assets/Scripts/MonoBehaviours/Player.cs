@@ -1,8 +1,5 @@
-﻿using System.Reflection;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class Player : MonoBehaviour
 {
@@ -14,24 +11,9 @@ public class Player : MonoBehaviour
     [Space]
     [SerializeField] private Sound driveSound;
     [SerializeField] private Sound bumpSound;
-    [SerializeField] public Sound breakSound;
+    public Sound breakSound;
 
     [HideInInspector] public Car_SO car;
-
-    private Ability ability;
-    public Ability Ability
-    {
-        get
-        {
-            if (ability == null)
-            {
-                Type abilityType = Type.GetType(car.abilityClassName);
-                ability = (Ability)abilityType.GetConstructor(new Type[0]).Invoke(new object[0]);
-            }
-
-            return ability;
-        }
-    }
 
     private List<Status> statuses;
 
@@ -126,7 +108,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(controls.abilityButton))
-            Ability.TryUse(this);
+            car.ability.TryUse(this);
     }
 
     public void AddEffect(Status status)
@@ -147,7 +129,7 @@ public class Player : MonoBehaviour
         if (relativeVelocity > damageThreshold)
         {
             AudioManager.Instance.Play(bumpSound);
-            bumpSound.source.pitch = UnityEngine.Random.Range(0.5f, 1.4f);
+            bumpSound.source.pitch = Random.Range(0.5f, 1.4f);
             bumpSound.source.volume = Mathf.Lerp(0.4f, 0.8f, (relativeVelocity - damageThreshold) / 16f);
 
             carStats.TakeDamage(relativeVelocity * 0.8f);

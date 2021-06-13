@@ -1,12 +1,11 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Scriptable Objects/Statuses/Regeneration")]
 public class Regeneration : Status
 {
-    private float durabilityPerSecond;
+    [SerializeField] private float durabilityPerSecond;
 
-    public Regeneration() : this(-1, 30 / Time.fixedDeltaTime) { }
     public Regeneration(float duration, float durabilityPerSecond) : base(duration)
     {
         this.durabilityPerSecond = durabilityPerSecond;

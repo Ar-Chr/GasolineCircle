@@ -1,12 +1,11 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Scriptable Objects/Statuses/Continuous Acceleration")]
 public class ContinuousAcceleration : Status
 {
-    private float acceleration;
+    [SerializeField] private float acceleration;
 
-    public ContinuousAcceleration() : this(5f, 3f) { }
     public ContinuousAcceleration(float duration, float acceleration) : base(duration)
     {
         this.acceleration = acceleration;

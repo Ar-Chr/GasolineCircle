@@ -97,8 +97,8 @@ public class CarSelectionArea
         fuelRateText.text = CurrentCar.specs.fuelRate.ToString();
         topSpeedText.text = CurrentCar.specs.topSpeed.ToString();
 
-        abilityName.text = CurrentCar.Ability.AbilityInfo.name;
-        abilityIcon.sprite = CurrentCar.Ability.AbilityInfo.abilitySprite;
+        abilityName.text = CurrentCar.ability.name;
+        abilityIcon.sprite = CurrentCar.ability.abilitySprite;
     }
 
     public void ResetCurrentCarNumber() => currentCarNumber = 0;

@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+[CreateAssetMenu(menuName = "Scriptable Objects/Statuses/Acceleration Modification")]
 public class AccelerationModification : Status
 {
-    private float accelerationModifier;
+    [SerializeField] private float accelerationModifier;
 
-    public AccelerationModification() : this(4f, 1.5f) { }
     public AccelerationModification(float duration, float accelerationModifier) : base(duration)
     {
         this.accelerationModifier = accelerationModifier;

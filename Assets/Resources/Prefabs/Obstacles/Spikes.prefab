@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2a8c16aacc96bb14b8c623668f48634a, type: 2}
+  - {fileID: 2100000, guid: af3162ea401724047bfbcdd339ba8127, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -107,4 +107,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destructionThreshold: 0
-  inflictedStatusClassName: TurnabilityLoss
+  inflictedStatuses:
+  - {fileID: 11400000, guid: d9e97ca0669323b41af622c679fa1494, type: 2}

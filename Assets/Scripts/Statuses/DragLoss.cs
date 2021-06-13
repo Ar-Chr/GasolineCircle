@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+[CreateAssetMenu(menuName = "Scriptable Objects/Statuses/Drag Loss")]
 public class DragLoss : Status
 {
-    public DragLoss() : this(3f) { }
-    public DragLoss(float duration) : base(duration) { }
+    public DragLoss (float duration) : base(duration) { }
 
     public override void ApplyEffect(Player player)
     {

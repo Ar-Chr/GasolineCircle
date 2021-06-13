@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e6c91cd2d2f4f454cb365df0243b3cf1, type: 2}
+  - {fileID: 2100000, guid: 453b77e3984b8b347a1c92c728679c75, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -107,4 +107,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destructionThreshold: 2.7
-  inflictedStatusClassName: 
+  inflictedStatuses: []
